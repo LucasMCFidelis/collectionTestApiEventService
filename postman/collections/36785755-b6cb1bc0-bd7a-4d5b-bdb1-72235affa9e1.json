@@ -8718,15 +8718,11 @@
 			"value": ""
 		},
 		{
-			"key": "organizerRecentCadastreId",
-			"value": ""
-		},
-		{
 			"key": "organizerRecentCadastreName",
 			"value": ""
 		},
 		{
-			"key": "organizerRecentCadastreCnpj",
+			"key": "safeDeleteRequest",
 			"value": ""
 		}
 	]
