@@ -1299,19 +1299,19 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "40aadab4-7bf8-470d-9051-2e74d76c943f",
+						"id": "9bf99564-25be-405a-9f4c-d3e352b67af5",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
 						"exec": [
 							"function use(fnName) {\r",
-							"    const raw = pm.globals.get(fnName);\r",
+							"    const raw = pm.collectionVariables.get(fnName);\r",
 							"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 							"    return eval(`(${raw})`);\r",
 							"}\r",
 							"\r",
 							"const createCategoryRequest = use(\"createCategoryRequest\");\r",
-							"const adminToken = pm.environment.get(\"adminToken\");\r",
+							"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
 							"\r",
 							"createCategoryRequest(adminToken);\r",
 							""
@@ -1321,7 +1321,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "bae9e8f2-ddbe-4e5d-abad-c7cde2d113df",
+						"id": "aef03e09-6afc-4880-9523-7cebe4c1738d",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
