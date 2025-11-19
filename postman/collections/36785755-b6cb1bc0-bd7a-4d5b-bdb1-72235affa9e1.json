@@ -676,7 +676,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "50c3fc4e-fd31-4881-9895-2a9c4fb09070",
+						"id": "b776a431-2c47-4166-8964-916f1c491294",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
@@ -698,7 +698,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "3ebdd2ff-27b0-4686-a1aa-adf325ab9d60",
+						"id": "a8555536-fa14-4315-a6ef-8af97e36df4c",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
@@ -710,8 +710,8 @@
 							"}\r",
 							"\r",
 							"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r",
-							"const adminToken   = pm.environment.get(\"adminToken\");\r",
-							"const organizerId  = pm.environment.get(\"organizerRecentCadastreId\");\r",
+							"const adminToken   = pm.collectionVariables.get(\"adminToken\");\r",
+							"const organizerId  = pm.collectionVariables.get(\"organizerRecentCadastreId\");\r",
 							"\r",
 							"deleteOrganizerRequest(adminToken, organizerId);"
 						]
