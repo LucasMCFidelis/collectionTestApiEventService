@@ -8141,7 +8141,7 @@
 					"response": []
 				},
 				{
-					"name": "Buscar mapa estãtico Copy",
+					"name": "Buscar mapa estático sem informar latitude",
 					"event": [
 						{
 							"listen": "test",
