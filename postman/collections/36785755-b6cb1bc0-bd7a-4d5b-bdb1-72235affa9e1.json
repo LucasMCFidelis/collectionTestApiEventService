@@ -8262,7 +8262,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "992eb45c-0dc5-454b-8a44-32a482623d38",
+				"id": "dfd98fc6-c6a3-4250-a7d0-c3b4569eac35",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -8573,7 +8573,7 @@
 					"/***************************************************\r",
 					" * ✅ MAIN FLOW AUTOMÁTICO\r",
 					" ***************************************************/\r",
-					"let adminToken = pm.environment.get(\"adminToken\");\r",
+					"let adminToken = pm.collectionVariables.get(\"adminToken\");\r",
 					"const adminEmail = pm.environment.get(\"adminEmail\");\r",
 					"const adminPassword = pm.environment.get(\"adminPassword\");\r",
 					"\r",
@@ -8613,7 +8613,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "9360c52a-b925-496c-a810-959085e67c60",
+				"id": "bb315a4c-12ca-4d3e-8201-dd305736a850",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
