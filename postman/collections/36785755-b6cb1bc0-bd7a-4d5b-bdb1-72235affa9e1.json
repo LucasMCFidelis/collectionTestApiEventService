@@ -1299,7 +1299,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "9bf99564-25be-405a-9f4c-d3e352b67af5",
+						"id": "8c3949b1-4b83-4826-9d3d-19f5d93aa5a5",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
@@ -1321,20 +1321,20 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "aef03e09-6afc-4880-9523-7cebe4c1738d",
+						"id": "9928df54-e8f9-4a32-beed-e6d4abcd0317",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
 						"exec": [
 							"function use(fnName) {\r",
-							"    const raw = pm.globals.get(fnName);\r",
+							"    const raw = pm.collectionVariables.get(fnName);\r",
 							"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 							"    return eval(`(${raw})`);\r",
 							"}\r",
 							"\r",
 							"const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
-							"const adminToken   = pm.environment.get(\"adminToken\");\r",
-							"const categoryId  = pm.environment.get(\"categoryRecentCadastreId\");\r",
+							"const adminToken   = pm.collectionVariables.get(\"adminToken\");\r",
+							"const categoryId  = pm.collectionVariables.get(\"categoryRecentCadastreId\");\r",
 							"\r",
 							"deleteCategoryRequest(adminToken, categoryId);"
 						]
