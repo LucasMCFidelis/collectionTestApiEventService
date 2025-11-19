@@ -8199,7 +8199,7 @@
 					"response": []
 				},
 				{
-					"name": "Buscar mapa estático sem informar latitude Copy",
+					"name": "Buscar mapa estático sem informar longitude",
 					"event": [
 						{
 							"listen": "test",
