@@ -8668,6 +8668,66 @@
 		{
 			"key": "userRecentCadastreToken",
 			"value": ""
+		},
+		{
+			"key": "use",
+			"value": ""
+		},
+		{
+			"key": "parseJwt",
+			"value": ""
+		},
+		{
+			"key": "isTokenExpired",
+			"value": ""
+		},
+		{
+			"key": "performLogin",
+			"value": ""
+		},
+		{
+			"key": "createEventRequest",
+			"value": ""
+		},
+		{
+			"key": "createSimpleUserRequest",
+			"value": ""
+		},
+		{
+			"key": "createOrganizerRequest",
+			"value": ""
+		},
+		{
+			"key": "createCategoryRequest",
+			"value": ""
+		},
+		{
+			"key": "deleteOrganizerRequest",
+			"value": ""
+		},
+		{
+			"key": "deleteCategoryRequest",
+			"value": ""
+		},
+		{
+			"key": "deleteSimpleUserRequest",
+			"value": ""
+		},
+		{
+			"key": "deleteEventRequest",
+			"value": ""
+		},
+		{
+			"key": "organizerRecentCadastreId",
+			"value": ""
+		},
+		{
+			"key": "organizerRecentCadastreName",
+			"value": ""
+		},
+		{
+			"key": "organizerRecentCadastreCnpj",
+			"value": ""
 		}
 	]
 }
