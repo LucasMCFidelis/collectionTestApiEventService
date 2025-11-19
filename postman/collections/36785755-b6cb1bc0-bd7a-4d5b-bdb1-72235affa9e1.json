@@ -8101,10 +8101,15 @@
 								"exec": [
 									"pm.test(\"Status code deve ser 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
-									"});"
+									"});\r",
+									"\r",
+									"pm.test(\"Valida o Content-Type deve ser image/png\", function (){\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"image/png\");\r",
+									"})"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -8116,12 +8121,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://event-service-eventscatalog.onrender.com/map?latitude=-7.119701&longitude=-34.861367",
-							"protocol": "https",
+							"raw": "{{event_service_url}}/map?latitude=-7.119701&longitude=-34.861367",
 							"host": [
-								"event-service-eventscatalog",
-								"onrender",
-								"com"
+								"{{event_service_url}}"
 							],
 							"path": [
 								"map"
@@ -8148,12 +8150,26 @@
 							"script": {
 								"id": "e1292e76-e1c4-493f-8981-0f2ca7f22764",
 								"exec": [
-									"pm.test(\"Status code deve ser 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
+									"pm.test(\"Status code deve ser 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Deve validar o Content-Type\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Deve validar a presenca do campo 'message'\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('message');\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Deve validar a mensagem de erro\", function () {\r",
+									"    const expectMessage = (\"Erro ao carregar o mapa\").toLowerCase()\r",
+									"    pm.expect(pm.response.json().message.toLowerCase()).to.include(expectMessage)\r",
+									"})"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -8165,21 +8181,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://event-service-eventscatalog.onrender.com/map?latitude=-7.119701&longitude=-34.861367",
-							"protocol": "https",
+							"raw": "{{event_service_url}}/map?longitude=-34.861367",
 							"host": [
-								"event-service-eventscatalog",
-								"onrender",
-								"com"
+								"{{event_service_url}}"
 							],
 							"path": [
 								"map"
 							],
 							"query": [
-								{
-									"key": "latitude",
-									"value": "-7.119701"
-								},
 								{
 									"key": "longitude",
 									"value": "-34.861367"
