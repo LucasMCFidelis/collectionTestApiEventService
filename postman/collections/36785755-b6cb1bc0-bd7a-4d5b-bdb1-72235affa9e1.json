@@ -8262,7 +8262,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "dfd98fc6-c6a3-4250-a7d0-c3b4569eac35",
+				"id": "c8a388c7-c46f-431e-9e78-f7b9dfbb7c75",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -8598,7 +8598,7 @@
 					"    console.log(\"✅ Token admin válido\");\r",
 					"}\r",
 					"\r",
-					"let userToken = pm.environment.get(\"userRecentCadastreToken\");\r",
+					"let userToken = pm.collectionVariables.get(\"userRecentCadastreToken\");\r",
 					"\r",
 					"if (!userToken || _isTokenExpired(userToken)) {\r",
 					"    console.warn(\"⚠ Token user ausente/expirado → criando user\");\r",
@@ -8613,7 +8613,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "bb315a4c-12ca-4d3e-8201-dd305736a850",
+				"id": "b172cb0c-a43a-436f-acb1-8320ec8a0981",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
