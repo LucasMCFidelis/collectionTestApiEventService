@@ -34,7 +34,7 @@
 											"});\r",
 											"\r",
 											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
-											"deleteOrganizerRequest(pm.collectionVariables.get(\"adminToken\"), pm.response.json().organizerId)\r",
+											"deleteOrganizerRequest(pm.environment.get(\"adminToken\"), pm.response.json().organizerId)\r",
 											""
 										],
 										"type": "text/javascript",
@@ -590,7 +590,7 @@
 										"id": "9bd4d745-5d9e-4533-95e8-d8a8fea718e7",
 										"exec": [
 											"function use(fnName) {\r",
-											"    const raw = pm.globals.get(fnName);\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
 											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 											"    return eval(`(${raw})`);\r",
 											"}\r",
@@ -619,7 +619,7 @@
 											"})\r",
 											"\r",
 											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
-											"deleteOrganizerRequest(pm.environment.get(\"adminToken\"), pm.response.json().organizerId)\r",
+											"deleteOrganizerRequest(pm.collectionVariables.get(\"adminToken\"), pm.response.json().organizerId)\r",
 											""
 										],
 										"type": "text/javascript",
