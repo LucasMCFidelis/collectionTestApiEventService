@@ -8262,7 +8262,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "c8a388c7-c46f-431e-9e78-f7b9dfbb7c75",
+				"id": "0d2f0823-fd5f-4348-8b45-de95b053249a",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -8484,7 +8484,7 @@
 					"    );\r",
 					"}\r",
 					"\r",
-					"pm.globals.set(\"safeDeleteRequest\", safeDeleteRequest.toString())\r",
+					"pm.collectionVariables.set(\"safeDeleteRequest\", safeDeleteRequest.toString())\r",
 					"\r",
 					"function deleteOrganizerRequest(token, organizerId) {\r",
 					"    if (!organizerId) return;\r",
@@ -8613,7 +8613,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "b172cb0c-a43a-436f-acb1-8320ec8a0981",
+				"id": "6a3649da-8583-4006-89b6-1cffe9504bcc",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
