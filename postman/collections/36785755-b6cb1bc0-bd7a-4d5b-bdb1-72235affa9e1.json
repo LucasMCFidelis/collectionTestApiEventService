@@ -20,7 +20,7 @@
 										"id": "9bd4d745-5d9e-4533-95e8-d8a8fea718e7",
 										"exec": [
 											"function use(fnName) {\r",
-											"    const raw = pm.globals.get(fnName);\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
 											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 											"    return eval(`(${raw})`);\r",
 											"}\r",
@@ -590,7 +590,7 @@
 										"id": "9bd4d745-5d9e-4533-95e8-d8a8fea718e7",
 										"exec": [
 											"function use(fnName) {\r",
-											"    const raw = pm.globals.get(fnName);\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
 											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 											"    return eval(`(${raw})`);\r",
 											"}\r",
@@ -619,7 +619,7 @@
 											"})\r",
 											"\r",
 											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
-											"deleteOrganizerRequest(pm.environment.get(\"adminToken\"), pm.response.json().organizerId)\r",
+											"deleteOrganizerRequest(pm.collectionVariables.get(\"adminToken\"), pm.response.json().organizerId)\r",
 											""
 										],
 										"type": "text/javascript",
@@ -676,19 +676,19 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "7923d1dd-64b5-4a9a-a382-06438e11e74e",
+						"id": "b776a431-2c47-4166-8964-916f1c491294",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
 						"exec": [
 							"function use(fnName) {\r",
-							"    const raw = pm.globals.get(fnName);\r",
+							"    const raw = pm.collectionVariables.get(fnName);\r",
 							"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 							"    return eval(`(${raw})`);\r",
 							"}\r",
 							"\r",
 							"const createOrganizerRequest = use(\"createOrganizerRequest\");\r",
-							"const adminToken = pm.environment.get(\"adminToken\");\r",
+							"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
 							"\r",
 							"createOrganizerRequest(adminToken);\r",
 							""
@@ -698,20 +698,20 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "065bdfb3-4fa2-4961-befa-95839620ce38",
+						"id": "a8555536-fa14-4315-a6ef-8af97e36df4c",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
 						"exec": [
 							"function use(fnName) {\r",
-							"    const raw = pm.globals.get(fnName);\r",
+							"    const raw = pm.collectionVariables.get(fnName);\r",
 							"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 							"    return eval(`(${raw})`);\r",
 							"}\r",
 							"\r",
 							"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r",
-							"const adminToken   = pm.environment.get(\"adminToken\");\r",
-							"const organizerId  = pm.environment.get(\"organizerRecentCadastreId\");\r",
+							"const adminToken   = pm.collectionVariables.get(\"adminToken\");\r",
+							"const organizerId  = pm.collectionVariables.get(\"organizerRecentCadastreId\");\r",
 							"\r",
 							"deleteOrganizerRequest(adminToken, organizerId);"
 						]
@@ -1299,19 +1299,19 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "40aadab4-7bf8-470d-9051-2e74d76c943f",
+						"id": "8c3949b1-4b83-4826-9d3d-19f5d93aa5a5",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
 						"exec": [
 							"function use(fnName) {\r",
-							"    const raw = pm.globals.get(fnName);\r",
+							"    const raw = pm.collectionVariables.get(fnName);\r",
 							"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 							"    return eval(`(${raw})`);\r",
 							"}\r",
 							"\r",
 							"const createCategoryRequest = use(\"createCategoryRequest\");\r",
-							"const adminToken = pm.environment.get(\"adminToken\");\r",
+							"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
 							"\r",
 							"createCategoryRequest(adminToken);\r",
 							""
@@ -1321,20 +1321,20 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "bae9e8f2-ddbe-4e5d-abad-c7cde2d113df",
+						"id": "9928df54-e8f9-4a32-beed-e6d4abcd0317",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
 						"exec": [
 							"function use(fnName) {\r",
-							"    const raw = pm.globals.get(fnName);\r",
+							"    const raw = pm.collectionVariables.get(fnName);\r",
 							"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 							"    return eval(`(${raw})`);\r",
 							"}\r",
 							"\r",
 							"const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
-							"const adminToken   = pm.environment.get(\"adminToken\");\r",
-							"const categoryId  = pm.environment.get(\"categoryRecentCadastreId\");\r",
+							"const adminToken   = pm.collectionVariables.get(\"adminToken\");\r",
+							"const categoryId  = pm.collectionVariables.get(\"categoryRecentCadastreId\");\r",
 							"\r",
 							"deleteCategoryRequest(adminToken, categoryId);"
 						]
@@ -8262,7 +8262,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "ff08a237-3ff2-4f2d-8ff1-5a71cb51ad54",
+				"id": "0d2f0823-fd5f-4348-8b45-de95b053249a",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -8348,9 +8348,9 @@
 					"\r",
 					"            const json = res.json();\r",
 					"            if (json?.userId) {\r",
-					"                pm.environment.set(\"userRecentCadastreId\", json.userId);\r",
-					"                pm.environment.set(\"userRecentCadastreEmail\", json.userEmail);\r",
-					"                pm.environment.set(\"userRecentCadastreToken\", json.userToken);\r",
+					"                pm.collectionVariables.set(\"userRecentCadastreId\", json.userId);\r",
+					"                pm.collectionVariables.set(\"userRecentCadastreEmail\", json.userEmail);\r",
+					"                pm.collectionVariables.set(\"userRecentCadastreToken\", json.userToken);\r",
 					"            }\r",
 					"        }\r",
 					"    );\r",
@@ -8392,8 +8392,8 @@
 					"\r",
 					"            const json = res.json();\r",
 					"            if (json?.eventId) {\r",
-					"                pm.environment.set(\"eventRecentCadastreId\", json.eventId);\r",
-					"                pm.environment.set(\"eventRecentCadastreTitle\", json.eventTitle);\r",
+					"                pm.collectionVariables.set(\"eventRecentCadastreId\", json.eventId);\r",
+					"                pm.collectionVariables.set(\"eventRecentCadastreTitle\", json.eventTitle);\r",
 					"                console.log(\"✅ Evento criado com sucesso:\", json.eventId);\r",
 					"            } else {\r",
 					"                console.warn(\"⚠ Nenhum eventId retornado:\", json);\r",
@@ -8424,9 +8424,9 @@
 					"        (err, res) => {\r",
 					"            const json = res.json();\r",
 					"            if (json?.organizerId) {\r",
-					"                pm.environment.set(\"organizerRecentCadastreId\", json.organizerId);\r",
-					"                pm.environment.set(\"organizerRecentCadastreName\", json.organizerName);\r",
-					"                pm.environment.set(\"organizerRecentCadastreCnpj\", json.organizerCnpj);\r",
+					"                pm.collectionVariables.set(\"organizerRecentCadastreId\", json.organizerId);\r",
+					"                pm.collectionVariables.set(\"organizerRecentCadastreName\", json.organizerName);\r",
+					"                pm.collectionVariables.set(\"organizerRecentCadastreCnpj\", json.organizerCnpj);\r",
 					"            }\r",
 					"        }\r",
 					"    );\r",
@@ -8452,8 +8452,8 @@
 					"        (err, res) => {\r",
 					"            const json = res.json();\r",
 					"            if (json?.categoryId) {\r",
-					"                pm.environment.set(\"categoryRecentCadastreId\", json.categoryId);\r",
-					"                pm.environment.set(\"categoryRecentCadastreName\", json.categoryName);\r",
+					"                pm.collectionVariables.set(\"categoryRecentCadastreId\", json.categoryId);\r",
+					"                pm.collectionVariables.set(\"categoryRecentCadastreName\", json.categoryName);\r",
 					"            }\r",
 					"        }\r",
 					"    );\r",
@@ -8484,7 +8484,7 @@
 					"    );\r",
 					"}\r",
 					"\r",
-					"pm.globals.set(\"safeDeleteRequest\", safeDeleteRequest.toString())\r",
+					"pm.collectionVariables.set(\"safeDeleteRequest\", safeDeleteRequest.toString())\r",
 					"\r",
 					"function deleteOrganizerRequest(token, organizerId) {\r",
 					"    if (!organizerId) return;\r",
@@ -8494,8 +8494,8 @@
 					"        url: `${pm.environment.get(\"event_service_url\")}/events-organizers/${organizerId}`,\r",
 					"        token,\r",
 					"        onSuccess: () => {\r",
-					"            pm.environment.unset(\"organizerRecentCadastreId\")\r",
-					"            pm.environment.unset(\"organizerRecentCadastreCnpj\")\r",
+					"            pm.collectionVariables.unset(\"organizerRecentCadastreId\")\r",
+					"            pm.collectionVariables.unset(\"organizerRecentCadastreCnpj\")\r",
 					"        },\r",
 					"    });\r",
 					"}\r",
@@ -8508,8 +8508,8 @@
 					"        url: `${pm.environment.get(\"event_service_url\")}/events-categories/${categoryId}`,\r",
 					"        token,\r",
 					"        onSuccess: () => {\r",
-					"            pm.environment.unset(\"categoryRecentCadastreId\")\r",
-					"            pm.environment.unset(\"categoryRecentCadastreName\")\r",
+					"            pm.collectionVariables.unset(\"categoryRecentCadastreId\")\r",
+					"            pm.collectionVariables.unset(\"categoryRecentCadastreName\")\r",
 					"        }\r",
 					"    });\r",
 					"}\r",
@@ -8522,9 +8522,9 @@
 					"        url: `${pm.environment.get(\"user_service_url\")}/${userId}`,\r",
 					"        token,\r",
 					"        onSuccess: () => {\r",
-					"            pm.environment.unset(\"userRecentCadastreId\");\r",
-					"            pm.environment.unset(\"userRecentCadastreEmail\");\r",
-					"            pm.environment.unset(\"userRecentCadastreToken\");\r",
+					"            pm.collectionVariables.unset(\"userRecentCadastreId\");\r",
+					"            pm.collectionVariables.unset(\"userRecentCadastreEmail\");\r",
+					"            pm.collectionVariables.unset(\"userRecentCadastreToken\");\r",
 					"        },\r",
 					"    });\r",
 					"}\r",
@@ -8537,7 +8537,7 @@
 					"        url: `${pm.environment.get(\"event_service_url\")}/events/${eventId}`,\r",
 					"        token,\r",
 					"        onSuccess: () => {\r",
-					"            pm.environment.unset(\"eventRecentCadastreId\");\r",
+					"            pm.collectionVariables.unset(\"eventRecentCadastreId\");\r",
 					"        },\r",
 					"    });\r",
 					"}\r",
@@ -8552,9 +8552,9 @@
 					"}\r",
 					"\r",
 					"/***************************************************\r",
-					" * ✅ REGISTRO DAS FUNÇÕES EM pm.globals\r",
+					" * ✅ REGISTRO DAS FUNÇÕES EM pm.collectionVariables\r",
 					" ***************************************************/\r",
-					"const register = fn => pm.globals.set(fn.name, fn.toString());\r",
+					"const register = fn => pm.collectionVariables.set(fn.name, fn.toString());\r",
 					"[\r",
 					"    use,\r",
 					"    parseJwt,\r",
@@ -8573,7 +8573,7 @@
 					"/***************************************************\r",
 					" * ✅ MAIN FLOW AUTOMÁTICO\r",
 					" ***************************************************/\r",
-					"let adminToken = pm.environment.get(\"adminToken\");\r",
+					"let adminToken = pm.collectionVariables.get(\"adminToken\");\r",
 					"const adminEmail = pm.environment.get(\"adminEmail\");\r",
 					"const adminPassword = pm.environment.get(\"adminPassword\");\r",
 					"\r",
@@ -8591,14 +8591,14 @@
 					"            return null;\r",
 					"        }\r",
 					"\r",
-					"        pm.environment.set(\"adminToken\", newToken);\r",
+					"        pm.collectionVariables.set(\"adminToken\", newToken);\r",
 					"        adminToken = newToken;\r",
 					"    });\r",
 					"} else {\r",
 					"    console.log(\"✅ Token admin válido\");\r",
 					"}\r",
 					"\r",
-					"let userToken = pm.environment.get(\"userRecentCadastreToken\");\r",
+					"let userToken = pm.collectionVariables.get(\"userRecentCadastreToken\");\r",
 					"\r",
 					"if (!userToken || _isTokenExpired(userToken)) {\r",
 					"    console.warn(\"⚠ Token user ausente/expirado → criando user\");\r",
@@ -8613,7 +8613,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "b31f9212-1259-4fac-85d2-16dd2ff68e4a",
+				"id": "6a3649da-8583-4006-89b6-1cffe9504bcc",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -8651,6 +8651,78 @@
 		},
 		{
 			"key": "helpersLoaded",
+			"value": ""
+		},
+		{
+			"key": "adminToken",
+			"value": ""
+		},
+		{
+			"key": "userRecentCadastreId",
+			"value": ""
+		},
+		{
+			"key": "userRecentCadastreEmail",
+			"value": ""
+		},
+		{
+			"key": "userRecentCadastreToken",
+			"value": ""
+		},
+		{
+			"key": "use",
+			"value": ""
+		},
+		{
+			"key": "parseJwt",
+			"value": ""
+		},
+		{
+			"key": "isTokenExpired",
+			"value": ""
+		},
+		{
+			"key": "performLogin",
+			"value": ""
+		},
+		{
+			"key": "createEventRequest",
+			"value": ""
+		},
+		{
+			"key": "createSimpleUserRequest",
+			"value": ""
+		},
+		{
+			"key": "createOrganizerRequest",
+			"value": ""
+		},
+		{
+			"key": "createCategoryRequest",
+			"value": ""
+		},
+		{
+			"key": "deleteOrganizerRequest",
+			"value": ""
+		},
+		{
+			"key": "deleteCategoryRequest",
+			"value": ""
+		},
+		{
+			"key": "deleteSimpleUserRequest",
+			"value": ""
+		},
+		{
+			"key": "deleteEventRequest",
+			"value": ""
+		},
+		{
+			"key": "organizerRecentCadastreName",
+			"value": ""
+		},
+		{
+			"key": "safeDeleteRequest",
 			"value": ""
 		}
 	]
