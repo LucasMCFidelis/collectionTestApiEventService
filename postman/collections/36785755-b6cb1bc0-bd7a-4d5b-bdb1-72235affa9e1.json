@@ -8092,7 +8092,7 @@
 			"name": "Mapa Estático",
 			"item": [
 				{
-					"name": "buscar mapa estatico",
+					"name": "Buscar mapa estãtico",
 					"event": [
 						{
 							"listen": "test",
