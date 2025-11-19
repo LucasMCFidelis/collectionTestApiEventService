@@ -8652,6 +8652,22 @@
 		{
 			"key": "helpersLoaded",
 			"value": ""
+		},
+		{
+			"key": "adminToken",
+			"value": ""
+		},
+		{
+			"key": "userRecentCadastreId",
+			"value": ""
+		},
+		{
+			"key": "userRecentCadastreEmail",
+			"value": ""
+		},
+		{
+			"key": "userRecentCadastreToken",
+			"value": ""
 		}
 	]
 }
