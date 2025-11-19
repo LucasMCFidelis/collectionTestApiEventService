@@ -8262,7 +8262,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "04476db5-c471-4e05-ae73-7bc2f7eb9c1d",
+				"id": "992eb45c-0dc5-454b-8a44-32a482623d38",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
@@ -8552,9 +8552,9 @@
 					"}\r",
 					"\r",
 					"/***************************************************\r",
-					" * ✅ REGISTRO DAS FUNÇÕES EM pm.globals\r",
+					" * ✅ REGISTRO DAS FUNÇÕES EM pm.collectionVariables\r",
 					" ***************************************************/\r",
-					"const register = fn => pm.globals.set(fn.name, fn.toString());\r",
+					"const register = fn => pm.collectionVariables.set(fn.name, fn.toString());\r",
 					"[\r",
 					"    use,\r",
 					"    parseJwt,\r",
@@ -8613,7 +8613,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "5f54b987-5522-4513-9d84-c341232b69c2",
+				"id": "9360c52a-b925-496c-a810-959085e67c60",
 				"type": "text/javascript",
 				"packages": {},
 				"requests": {},
