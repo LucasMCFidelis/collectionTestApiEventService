@@ -8237,7 +8237,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{event_service_url}}/map?longitude=-34.861367",
+							"raw": "{{event_service_url}}/map?llatitude=-7.119701",
 							"host": [
 								"{{event_service_url}}"
 							],
@@ -8246,8 +8246,8 @@
 							],
 							"query": [
 								{
-									"key": "longitude",
-									"value": "-34.861367"
+									"key": "llatitude",
+									"value": "-7.119701"
 								}
 							]
 						}
