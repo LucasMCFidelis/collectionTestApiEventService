@@ -676,7 +676,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "7923d1dd-64b5-4a9a-a382-06438e11e74e",
+						"id": "b38fbf00-3c15-4d83-bb5d-baf90f71c866",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
@@ -688,7 +688,7 @@
 							"}\r",
 							"\r",
 							"const createOrganizerRequest = use(\"createOrganizerRequest\");\r",
-							"const adminToken = pm.environment.get(\"adminToken\");\r",
+							"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
 							"\r",
 							"createOrganizerRequest(adminToken);\r",
 							""
@@ -698,7 +698,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "065bdfb3-4fa2-4961-befa-95839620ce38",
+						"id": "5ec040cd-713a-4786-be62-615211d46f65",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
