@@ -676,7 +676,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "35753eb9-4299-4f90-a7ef-3af5acc28807",
+						"id": "50c3fc4e-fd31-4881-9895-2a9c4fb09070",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
@@ -698,13 +698,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "42cb3515-88c3-49cd-8930-bb004004c3a5",
+						"id": "3ebdd2ff-27b0-4686-a1aa-adf325ab9d60",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
 						"exec": [
 							"function use(fnName) {\r",
-							"    const raw = pm.globals.get(fnName);\r",
+							"    const raw = pm.collectionVariables.get(fnName);\r",
 							"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 							"    return eval(`(${raw})`);\r",
 							"}\r",
