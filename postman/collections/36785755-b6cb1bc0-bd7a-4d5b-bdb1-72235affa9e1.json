@@ -676,13 +676,13 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b38fbf00-3c15-4d83-bb5d-baf90f71c866",
+						"id": "35753eb9-4299-4f90-a7ef-3af5acc28807",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
 						"exec": [
 							"function use(fnName) {\r",
-							"    const raw = pm.globals.get(fnName);\r",
+							"    const raw = pm.collectionVariables.get(fnName);\r",
 							"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 							"    return eval(`(${raw})`);\r",
 							"}\r",
@@ -698,7 +698,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5ec040cd-713a-4786-be62-615211d46f65",
+						"id": "42cb3515-88c3-49cd-8930-bb004004c3a5",
 						"type": "text/javascript",
 						"packages": {},
 						"requests": {},
