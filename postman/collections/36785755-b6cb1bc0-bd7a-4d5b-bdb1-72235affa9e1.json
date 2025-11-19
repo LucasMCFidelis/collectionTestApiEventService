@@ -8092,7 +8092,7 @@
 			"name": "Mapa Estático",
 			"item": [
 				{
-					"name": "Buscar mapa estãtico",
+					"name": "Buscar mapa estático",
 					"event": [
 						{
 							"listen": "test",
@@ -8109,6 +8109,55 @@
 						}
 					],
 					"id": "36785755-97cb33d5-c8e4-417c-9b14-f4feb4a71a25",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://event-service-eventscatalog.onrender.com/map?latitude=-7.119701&longitude=-34.861367",
+							"protocol": "https",
+							"host": [
+								"event-service-eventscatalog",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"map"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "-7.119701"
+								},
+								{
+									"key": "longitude",
+									"value": "-34.861367"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar mapa estãtico Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e1292e76-e1c4-493f-8981-0f2ca7f22764",
+								"exec": [
+									"pm.test(\"Status code deve ser 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "36785755-179a4b25-5b93-4fa3-b608-e24b2a8ac10c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
