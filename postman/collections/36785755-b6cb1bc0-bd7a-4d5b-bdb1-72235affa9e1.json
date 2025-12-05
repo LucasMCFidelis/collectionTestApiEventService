@@ -1174,6 +1174,62 @@
 							"response": []
 						},
 						{
+							"name": "Deletar categoria de evento inexistente",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fa39cbb3-4825-4aa9-ba84-e09d3716bcbd",
+										"exec": [
+											"pm.test(\"Status code deve ser 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include((\"Categoria de evento não encontrada\").toLowerCase());\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "36785755-72ea7e7a-728f-49d3-af28-42a88aa07b07",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{event_service_url}}/events-categories/c8be4e1c-5930-4fbb-885c-ebb0aa6ddbcf",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-categories",
+										"c8be4e1c-5930-4fbb-885c-ebb0aa6ddbcf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Deletar categoria de evento com id invalido",
 							"event": [
 								{
@@ -1236,62 +1292,6 @@
 					"name": "Update",
 					"item": [],
 					"id": "36785755-39e49eb3-c11d-4a1d-8044-2a591dc3eea2"
-				},
-				{
-					"name": "Deletar categoria de evento inexistente",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "fa39cbb3-4825-4aa9-ba84-e09d3716bcbd",
-								"exec": [
-									"pm.test(\"Status code deve ser 404\", function () {\r",
-									"    pm.response.to.have.status(404);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Deve validar a propriedade message\", function () {\r",
-									"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include((\"Categoria de evento não encontrada\").toLowerCase());\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"id": "36785755-72ea7e7a-728f-49d3-af28-42a88aa07b07",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{adminToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{event_service_url}}/events-categories/c8be4e1c-5930-4fbb-885c-ebb0aa6ddbcf",
-							"host": [
-								"{{event_service_url}}"
-							],
-							"path": [
-								"events-categories",
-								"c8be4e1c-5930-4fbb-885c-ebb0aa6ddbcf"
-							]
-						}
-					},
-					"response": []
 				}
 			],
 			"id": "36785755-9718b4a4-3239-4cc1-abfb-3dbf94c5bb7e",
