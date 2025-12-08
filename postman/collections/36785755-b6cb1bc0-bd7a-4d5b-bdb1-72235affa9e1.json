@@ -576,7 +576,7 @@
 							"response": []
 						},
 						{
-							"name": "Deletar organizador de evento com id invalido Copy",
+							"name": "Deletar organizador de evento com id vazio",
 							"event": [
 								{
 									"listen": "test",
