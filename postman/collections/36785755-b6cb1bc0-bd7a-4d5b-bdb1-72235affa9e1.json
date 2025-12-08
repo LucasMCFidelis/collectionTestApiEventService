@@ -574,6 +574,62 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Deletar organizador de evento com id invalido Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fa39cbb3-4825-4aa9-ba84-e09d3716bcbd",
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include((\"O id deve estar no formato de uuid v4\").toLowerCase());\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"id": "36785755-15abc011-692b-424d-9a00-5273882e751c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/c8be4",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"c8be4"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "36785755-40bb6b5f-e288-476b-aaa8-bdb34169fe7e"
