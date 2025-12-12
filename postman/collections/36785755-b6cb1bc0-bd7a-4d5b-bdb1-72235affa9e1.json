@@ -4,7 +4,7 @@
 		"name": "eventsService",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "36785755",
-		"_collection_link": "https://projeto-catlogo-de-eventos.postman.co/workspace/cbf513f9-9747-45cf-a397-52cda2cab29c/collection/36785755-b6cb1bc0-bd7a-4d5b-bdb1-72235affa9e1?action=share&source=collection_link&creator=36785755"
+		"_collection_link": "https://projeto-catlogo-de-eventos.postman.co/workspace/Cat%C3%A1logo-de-eventos~cbf513f9-9747-45cf-a397-52cda2cab29c/collection/36785755-b6cb1bc0-bd7a-4d5b-bdb1-72235affa9e1?action=share&source=collection_link&creator=36785755"
 	},
 	"item": [
 		{
@@ -219,9 +219,25 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"const organizers = pm.response.json();\r",
+											"\r",
 											"pm.test(\"Status code deve ser 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
+											"\r",
+											"pm.test(\"Resposta deve ser um array\", function () {\r",
+											"    pm.expect(Array.isArray(organizers)).to.be.true;\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Verifica que 'organizers' não esta vazio\", function () {\r",
+											"    pm.expect(organizers).to.not.empty;\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Cada organizador deve ter um id\", function () {\r",
+											"    organizers.forEach((organizer) => {\r",
+											"        pm.expect(organizer.organizerId).to.not.be.undefined;\r",
+											"    })\r",
+											"})\r",
 											""
 										],
 										"type": "text/javascript",
@@ -1426,17 +1442,26 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"const categories = pm.response.json();\r",
+											"\r",
 											"pm.test(\"Status code deve ser 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Resposta deve conter um array de categorias\", function () {\r",
-											"    pm.expect(pm.response.json()).to.be.an('array');\r",
+											"    pm.expect(Array.isArray(categories)).to.be.true;\r",
 											"})\r",
 											"\r",
 											"pm.test(\"Deve verificar se o array de categorias não está vazio\", function () {\r",
-											"    pm.expect(pm.response.json()).to.have.length.above(0);\r",
-											"})"
+											"    pm.expect(categories).to.not.empty;\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Cada organizador deve ter um id\", function () {\r",
+											"    categories.forEach((organizer) => {\r",
+											"        pm.expect(organizer.categoryId).to.not.be.undefined;\r",
+											"    })\r",
+											"})\r",
+											""
 										],
 										"type": "text/javascript",
 										"packages": {},
