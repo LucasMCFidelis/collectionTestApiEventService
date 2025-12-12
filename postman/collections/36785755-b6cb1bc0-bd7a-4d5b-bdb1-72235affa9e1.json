@@ -26,6 +26,9 @@
 											"    return eval(`(${raw})`);\r",
 											"}\r",
 											"\r",
+											"const adminToken = pm.collectionVariables.get(\"adminToken\")\r",
+											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
+											"\r",
 											"pm.test(\"Status code deve ser 201\", function () {\r",
 											"    pm.response.to.have.status(201);\r",
 											"});\r",
@@ -34,8 +37,7 @@
 											"    pm.expect(pm.response.json().organizerId).to.not.be.null;\r",
 											"});\r",
 											"\r",
-											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
-											"deleteOrganizerRequest(pm.environment.get(\"adminToken\"), pm.response.json().organizerId)\r",
+											"deleteOrganizerRequest(adminToken, pm.response.json().organizerId)\r",
 											""
 										],
 										"type": "text/javascript",
@@ -1164,6 +1166,16 @@
 								"packages": {},
 								"requests": {},
 								"exec": [
+									"function use(fnName) {\r",
+									"    const raw = pm.collectionVariables.get(fnName);\r",
+									"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+									"    return eval(`(${raw})`);\r",
+									"}\r",
+									"\r",
+									"const createOrganizerRequest = use(\"createOrganizerRequest\");\r",
+									"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
+									"\r",
+									"createOrganizerRequest(adminToken, true);\r",
 									""
 								]
 							}
@@ -1175,7 +1187,17 @@
 								"packages": {},
 								"requests": {},
 								"exec": [
-									""
+									"function use(fnName) {\r",
+									"    const raw = pm.collectionVariables.get(fnName);\r",
+									"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+									"    return eval(`(${raw})`);\r",
+									"}\r",
+									"\r",
+									"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r",
+									"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
+									"const organizerConflictId = pm.collectionVariables.get(\"organizerConflictId\");\r",
+									"\r",
+									"deleteOrganizerRequest(adminToken, organizerConflictId);"
 								]
 							}
 						}
@@ -1200,7 +1222,6 @@
 							"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
 							"\r",
 							"createOrganizerRequest(adminToken);\r",
-							"createOrganizerRequest(adminToken, true);\r",
 							""
 						]
 					}
@@ -1256,7 +1277,7 @@
 											"});\r",
 											"\r",
 											"const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
-											"deleteCategoryRequest(pm.environment.get(\"adminToken\"), pm.response.json().categoryId)\r",
+											"deleteCategoryRequest(pm.collectionVariables.get(\"adminToken\"), pm.response.json().categoryId)\r",
 											""
 										],
 										"type": "text/javascript",
@@ -2376,6 +2397,50 @@
 							},
 							"response": []
 						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									"function use(fnName) {\r",
+									"    const raw = pm.collectionVariables.get(fnName);\r",
+									"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+									"    return eval(`(${raw})`);\r",
+									"}\r",
+									"\r",
+									"const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
+									"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
+									"const categoryConflictId = pm.collectionVariables.get(\"categoryConclictId\");\r",
+									"\r",
+									"deleteCategoryRequest(adminToken, categoryConflictId);"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									"function use(fnName) {\r",
+									"    const raw = pm.collectionVariables.get(fnName);\r",
+									"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+									"    return eval(`(${raw})`);\r",
+									"}\r",
+									"\r",
+									"const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
+									"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
+									"const categoryConflictId = pm.collectionVariables.get(\"categoryConclictId\");\r",
+									"\r",
+									"deleteCategoryRequest(adminToken, categoryConflictId);"
+								]
+							}
+						}
 					]
 				}
 			],
@@ -2397,7 +2462,6 @@
 							"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
 							"\r",
 							"createCategoryRequest(adminToken);\r",
-							"createCategoryRequest(adminToken, true);\r",
 							""
 						]
 					}
@@ -2418,10 +2482,8 @@
 							"const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
 							"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
 							"const categoryId = pm.collectionVariables.get(\"categoryRecentCadastreId\");\r",
-							"const categoryConflictId = pm.collectionVariables.get(\"categoryConclictId\");\r",
 							"\r",
-							"deleteCategoryRequest(adminToken, categoryId);\r",
-							"deleteCategoryRequest(adminToken, categoryConflictId);"
+							"deleteCategoryRequest(adminToken, categoryId);"
 						]
 					}
 				}
