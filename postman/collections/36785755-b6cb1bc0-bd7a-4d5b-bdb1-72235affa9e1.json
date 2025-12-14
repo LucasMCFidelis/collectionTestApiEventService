@@ -4743,8 +4743,8 @@
 											"    pm.expect(newCategoryName).to.equal(oldCategoryName);\r",
 											"    \r",
 											"    const oldCategoryDescription = pm.collectionVariables.get(\"oldCategoryDescription\")\r",
-											"    const newCategoryName = pm.response.json().updatedCategory.categoryDescription\r",
-											"    pm.expect(newCategoryName).to.equal(oldCategoryDescription);\r",
+											"    const newCategoryDescription = pm.response.json().updatedCategory.categoryDescription\r",
+											"    pm.expect(newCategoryDescription).to.equal(oldCategoryDescription);\r",
 											"})\r",
 											"\r",
 											"pm.collectionVariables.unset(\"oldCategoryName\");\r",
@@ -5081,6 +5081,255 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Atualizar categoria de eventos com nome MENOR que o esperado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const minCategoryNameCharacters = pm.collectionVariables.get(\"minCategoryNameCharacters\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (`Nome da categoria deve conter no mínimo ${minCategoryNameCharacters} caracteres`).toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.unset(\"minCategoryNameCharacters\")\r",
+											"pm.collectionVariables.unset(\"categoryNameBelowMinCharacters\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const minCategoryNameCharacters = 3\r",
+											"const categoryNameBelowMinCharacters = \"a\".repeat(minCategoryNameCharacters - 1)\r",
+											"\r",
+											"pm.collectionVariables.set(\"minCategoryNameCharacters\", minCategoryNameCharacters)\r",
+											"pm.collectionVariables.set(\"categoryNameBelowMinCharacters\", categoryNameBelowMinCharacters)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"categoryName\": \"{{categoryNameBelowMinCharacters}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-categories/{{categoryRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-categories",
+										"{{categoryRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar categoria de eventos com nome MAIOR que o esperado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const maxCategoryNameCharacters = pm.collectionVariables.get(\"maxCategoryNameCharacters\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (`Nome da categoria deve conter no máximo ${maxCategoryNameCharacters} caracteres`).toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.unset(\"maxCategoryNameCharacters\")\r",
+											"pm.collectionVariables.unset(\"nameExcendMaxCaracters\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const maxCategoryNameCharacters = 30\r",
+											"const categoryNameExceedMaxCharacters = \"a\".repeat(maxCategoryNameCharacters + 1)\r",
+											"\r",
+											"pm.collectionVariables.set(\"maxCategoryNameCharacters\", maxCategoryNameCharacters)\r",
+											"pm.collectionVariables.set(\"categoryNameExceedMaxCharacters\", categoryNameExceedMaxCharacters)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"categoryName\": \"{{categoryNameExceedMaxCharacters}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-categories/{{categoryRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-categories",
+										"{{categoryRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar categoria de eventos com descrição MAIOR que o esperado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const maxCategoryDescriptionCharacters = pm.collectionVariables.get(\"maxCategoryDescriptionCharacters\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (`Descrição da categoria deve conter no máximo ${maxCategoryDescriptionCharacters} caracteres`).toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.unset(\"maxCategoryDescriptionCharacters\")\r",
+											"pm.collectionVariables.unset(\"categoryDescriptionExceedMaxCharacters\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const maxCategoryDescriptionCharacters = 300\r",
+											"const categoryDescriptionExceedMaxCharacters = \"a\".repeat(maxCategoryDescriptionCharacters + 1)\r",
+											"\r",
+											"pm.collectionVariables.set(\"maxCategoryDescriptionCharacters\", maxCategoryDescriptionCharacters)\r",
+											"pm.collectionVariables.set(\"categoryDescriptionExceedMaxCharacters\", categoryDescriptionExceedMaxCharacters)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}} {{$randomInt}}\", \r\n    \"categoryDescription\": \"{{categoryDescriptionExceedMaxCharacters}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-categories/{{categoryRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-categories",
+										"{{categoryRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"event": [
@@ -5097,11 +5346,10 @@
 									"    return eval(`(${raw})`);\r",
 									"}\r",
 									"\r",
-									"const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
+									"const createCategoryRequest = use(\"createCategoryRequest\");\r",
 									"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
-									"const categoryConflictId = pm.collectionVariables.get(\"categoryConclictId\");\r",
 									"\r",
-									"deleteCategoryRequest(adminToken, categoryConflictId);"
+									"createCategoryRequest(adminToken, true);"
 								]
 							}
 						},
@@ -12190,6 +12438,10 @@
 		},
 		{
 			"key": "organizerNameExceedMaxCharacters",
+			"value": ""
+		},
+		{
+			"key": "categoryRecentCadastreDescription",
 			"value": ""
 		}
 	]
