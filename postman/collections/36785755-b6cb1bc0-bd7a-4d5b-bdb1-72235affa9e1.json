@@ -44,6 +44,13 @@
 										"packages": {},
 										"requests": {}
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"packages": {},
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -61,7 +68,149 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"12.{{$randomInt}}.678/0001-90\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com usuário não autorizado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 403\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    pm.expect(pm.response.text()).to.contain((\"Permissão insuficiente\").toLowerCase());\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userRecentCadastreToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos sem token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Token não fornecido\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.contain(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -140,14 +289,14 @@
 							"response": []
 						},
 						{
-							"name": "Cadastro organizador de eventos com usuário não autorizado",
+							"name": "Cadastro organizador de eventos com email já cadastrado",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code deve ser 403\", function () {\r",
-											"    pm.response.to.have.status(403);\r",
+											"pm.test(\"Status code deve ser 409\", function () {\r",
+											"    pm.response.to.have.status(409);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Deve validar a propriedade message\", function () {\r",
@@ -155,19 +304,8 @@
 											"});\r",
 											"\r",
 											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-											"    pm.expect(pm.response.text()).to.contain((\"Permissão insuficiente\").toLowerCase());\r",
+											"    pm.expect(pm.response.text()).to.include((\"Este organizador já está cadastrado\").toLowerCase());\r",
 											"});"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								},
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											""
 										],
 										"type": "text/javascript",
 										"packages": {},
@@ -181,7 +319,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "{{userRecentCadastreToken}}",
+											"value": "{{adminToken}}",
 											"type": "string"
 										}
 									]
@@ -190,7 +328,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"12.345.678/0001-90\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{organizerRecentCadastreEmail}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -208,6 +346,880 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com nome vazio",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Nome do organizador não pode estar vazio\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com nome MENOR que o esperado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const minOrganizerNameCharacters = pm.collectionVariables.get(\"minOrganizerNameCharacters\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (`Nome do organizador deve conter no mínimo ${minOrganizerNameCharacters} caracteres`).toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.unset(\"minOrganizerNameCharacters\")\r",
+											"pm.collectionVariables.unset(\"organizerNameBelowMinCharacters\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const minOrganizerNameCharacters = 3\r",
+											"const organizerNameBelowMinCharacters = \"a\".repeat(minOrganizerNameCharacters - 1)\r",
+											"\r",
+											"pm.collectionVariables.set(\"minOrganizerNameCharacters\", minOrganizerNameCharacters)\r",
+											"pm.collectionVariables.set(\"organizerNameBelowMinCharacters\", organizerNameBelowMinCharacters)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{organizerNameBelowMinCharacters}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com nome MAIOR que o esperado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const maxOrganizerNameCharacters = pm.collectionVariables.get(\"maxOrganizerNameCharacters\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (`Nome do organizador deve conter no máximo ${maxOrganizerNameCharacters} caracteres`).toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.unset(\"maxOrganizerNameCharacters\")\r",
+											"pm.collectionVariables.unset(\"nameExcendMaxCaracters\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const maxOrganizerNameCharacters = 100\r",
+											"const organizerNameExceedMaxCharacters = \"a\".repeat(maxOrganizerNameCharacters + 1)\r",
+											"\r",
+											"pm.collectionVariables.set(\"maxOrganizerNameCharacters\", maxOrganizerNameCharacters)\r",
+											"pm.collectionVariables.set(\"organizerNameExceedMaxCharacters\", organizerNameExceedMaxCharacters)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{organizerNameExceedMaxCharacters}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com nome não fornecido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Nome do organizador é obrigatorio\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com cnpj vazio",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Cnpj do organizador não pode estar vazio\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com cnpj em formato invalido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Cnpj deve estar no formato 99.999.999/9999-99\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"111.222.333-44\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com cnpj não fornecido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Cnpj do organizador é obrigatorio\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com email vazio",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Email do organizador não pode estar vazio\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\", \r\n    \"organizerEmail\": \"\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com email em formato invalido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Email do organizador deve ser um email válido\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"lucas.com\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com email não fornecido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Email do organizador é obrigatório\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com telefone sem DDD",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Telefone deve estar no formato (83)99999-9999\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": \"99999-9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com telefone vazio",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function use(fnName) {\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
+											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+											"    return eval(`(${raw})`);\r",
+											"}\r",
+											"\r",
+											"const adminToken = pm.collectionVariables.get(\"adminToken\")\r",
+											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida presença do campo 'organizerId'\", function () {\r",
+											"    pm.expect(pm.response.json().organizerId).to.not.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida que o campo 'organizerPhoneNumber' foi definido para nulo\", function () {\r",
+											"    pm.expect(pm.response.json().organizerPhoneNumber).to.be.null;\r",
+											"});\r",
+											"\r",
+											"deleteOrganizerRequest(adminToken, pm.response.json().organizerId)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro organizador de eventos com telefone não fornecido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function use(fnName) {\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
+											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+											"    return eval(`(${raw})`);\r",
+											"}\r",
+											"\r",
+											"const adminToken = pm.collectionVariables.get(\"adminToken\")\r",
+											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida presença do campo 'organizerId'\", function () {\r",
+											"    pm.expect(pm.response.json().organizerId).to.not.be.null;\r",
+											"});\r",
+											"\r",
+											"deleteOrganizerRequest(adminToken, pm.response.json().organizerId)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {},
+								"exec": [
+									""
+								]
+							}
 						}
 					]
 				},
@@ -788,7 +1800,115 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"12.{{$randomInt}}.678/0001-90\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos sem modificar os dados",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida presença do campo 'message'\", function () {\r",
+											"    pm.expect(pm.response.json().message).to.not.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida mensagem de sucesso\", function () {\r",
+											"    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r",
+											"    pm.expect(pm.response.json().message.toLowerCase()).to.equal(expectMessage);\r",
+											"})\r",
+											"\r",
+											"pm.test(\"Valida presença do campo 'organizerId'\", function () {\r",
+											"    pm.expect(pm.response.json().organizerId).to.not.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida se o os dados do organizador se mantiveram os mesmos\", function () {\r",
+											"    const oldOrganizerName = pm.collectionVariables.get(\"oldOrganizerName\")\r",
+											"    const updatedOrganizerName = pm.response.json().updatedOrganizer.organizerName\r",
+											"    pm.expect(updatedOrganizerName).to.equal(oldOrganizerName);\r",
+											"\r",
+											"    const oldOrganizerCnpj = pm.collectionVariables.get(\"oldOrganizerCnpj\")\r",
+											"    const updatedOrganizerCnpj = pm.response.json().updatedOrganizer.organizerCnpj\r",
+											"    pm.expect(updatedOrganizerCnpj).to.equal(oldOrganizerCnpj);\r",
+											"\r",
+											"    const oldOrganizerEmail = pm.collectionVariables.get(\"oldOrganizerEmail\")\r",
+											"    const updatedOrganizerEmail = pm.response.json().updatedOrganizer.organizerEmail\r",
+											"    pm.expect(updatedOrganizerEmail).to.equal(oldOrganizerEmail);\r",
+											"\r",
+											"    const oldOrganizerPhoneNumber = pm.collectionVariables.get(\"oldOrganizerPhoneNumber\")\r",
+											"    const updatedOrganizerPhoneNumber = pm.response.json().updatedOrganizer.organizerPhoneNumber\r",
+											"    pm.expect(updatedOrganizerPhoneNumber).to.equal(oldOrganizerPhoneNumber);\r",
+											"})\r",
+											"\r",
+											"pm.collectionVariables.unset(\"oldOrganizerName\");\r",
+											"pm.collectionVariables.unset(\"oldOrganizerEmail\");\r",
+											"pm.collectionVariables.unset(\"oldOrganizerCnpj\");\r",
+											"pm.collectionVariables.unset(\"oldOrganizerPhoneNumber\");\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const oldOrganizerName = pm.collectionVariables.get(\"organizerRecentCadastreName\")\r",
+											"const oldOrganizerEmail = pm.collectionVariables.get(\"organizerRecentCadastreEmail\")\r",
+											"const oldOrganizerCnpj = pm.collectionVariables.get(\"organizerRecentCadastreCnpj\")\r",
+											"const oldOrganizerPhoneNumber = pm.collectionVariables.get(\"organizerRecentCadastrePhoneNumber\")\r",
+											"\r",
+											"pm.collectionVariables.set(\"oldOrganizerName\", oldOrganizerName);\r",
+											"pm.collectionVariables.set(\"oldOrganizerEmail\", oldOrganizerEmail);\r",
+											"pm.collectionVariables.set(\"oldOrganizerCnpj\", oldOrganizerCnpj);\r",
+											"pm.collectionVariables.set(\"oldOrganizerPhoneNumber\", oldOrganizerPhoneNumber);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{organizerRecentCadastreName}}\",\r\n    \"organizerCnpj\": \"{{organizerRecentCadastreCnpj}}\",\r\n    \"organizerEmail\": \"{{organizerRecentCadastreEmail}}\", \r\n    \"organizerPhoneNumber\": \"{{organizerRecentCadastrePhoneNumber}}\" \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -848,7 +1968,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"12.{{$randomInt}}.678/0001-90\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -920,7 +2040,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"12.{{$randomInt}}.678/0001-90\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -992,7 +2112,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"12.{{$randomInt}}.678/0001-90\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1019,6 +2139,16 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"function use(fnName) {\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
+											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+											"    return eval(`(${raw})`);\r",
+											"}\r",
+											"\r",
+											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r",
+											"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
+											"const organizerConflictId = pm.collectionVariables.get(\"organizerConflictId\");\r",
+											"\r",
 											"pm.test(\"Status code deve ser 409\", function () {\r",
 											"    pm.response.to.have.status(409);\r",
 											"});\r",
@@ -1030,7 +2160,9 @@
 											"pm.test(\"Valida mensagem de sucesso\", function () {\r",
 											"    const expectMessage = (\"Este organizador já está cadastrado\").toLowerCase()\r",
 											"    pm.expect(pm.response.json().message.toLowerCase()).to.equal(expectMessage);\r",
-											"})"
+											"})\r",
+											"\r",
+											"deleteOrganizerRequest(adminToken, organizerConflictId);"
 										],
 										"type": "text/javascript",
 										"packages": {},
@@ -1041,6 +2173,16 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
+											"function use(fnName) {\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
+											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+											"    return eval(`(${raw})`);\r",
+											"}\r",
+											"\r",
+											"const createOrganizerRequest = use(\"createOrganizerRequest\");\r",
+											"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
+											"\r",
+											"createOrganizerRequest(adminToken, true);\r",
 											""
 										],
 										"type": "text/javascript",
@@ -1091,6 +2233,16 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"function use(fnName) {\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
+											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+											"    return eval(`(${raw})`);\r",
+											"}\r",
+											"\r",
+											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r",
+											"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
+											"const organizerConflictId = pm.collectionVariables.get(\"organizerConflictId\");\r",
+											"\r",
 											"pm.test(\"Status code deve ser 409\", function () {\r",
 											"    pm.response.to.have.status(409);\r",
 											"});\r",
@@ -1103,7 +2255,8 @@
 											"    const expectMessage = (\"Este organizador já está cadastrado\").toLowerCase()\r",
 											"    pm.expect(pm.response.json().message.toLowerCase()).to.equal(expectMessage);\r",
 											"})\r",
-											""
+											"\r",
+											"deleteOrganizerRequest(adminToken, organizerConflictId);"
 										],
 										"type": "text/javascript",
 										"packages": {},
@@ -1114,6 +2267,16 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
+											"function use(fnName) {\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
+											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+											"    return eval(`(${raw})`);\r",
+											"}\r",
+											"\r",
+											"const createOrganizerRequest = use(\"createOrganizerRequest\");\r",
+											"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
+											"\r",
+											"createOrganizerRequest(adminToken, true);\r",
 											""
 										],
 										"type": "text/javascript",
@@ -1137,7 +2300,1027 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"12.{{$randomInt}}.678/0001-90\",\r\n    \"organizerEmail\": \"{{organizerConflictEmail}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{organizerConflictEmail}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com nome vazio",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Nome do organizador não pode estar vazio\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com nome MENOR que o esperado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const minNameCaracters = pm.collectionVariables.get(\"minNameCaracters\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (`Nome do organizador deve conter no mínimo ${minNameCaracters} caracteres`).toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.unset(\"minNameCaracters\")\r",
+											"pm.collectionVariables.unset(\"nameNotWithCaracters\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const minNameCaracters = 3\r",
+											"const nameNotWithCaracters = (\"a\").repeat(minNameCaracters - 1)\r",
+											"\r",
+											"pm.collectionVariables.set(\"minNameCaracters\", minNameCaracters)\r",
+											"pm.collectionVariables.set(\"nameNotWithCaracters\", nameNotWithCaracters)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"a\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com nome MAIOR que o esperado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const maxNameCaracters = pm.collectionVariables.get(\"maxNameCaracters\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (`Nome do organizador deve conter no máximo ${maxNameCaracters} caracteres`).toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.unset(\"maxNameCaracters\")\r",
+											"pm.collectionVariables.unset(\"nameExcendMaxCaracters\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const maxNameCaracters = 100\r",
+											"const nameExcendMaxCaracters = (\"a\").repeat(maxNameCaracters + 1)\r",
+											"\r",
+											"pm.collectionVariables.set(\"maxNameCaracters\", maxNameCaracters)\r",
+											"pm.collectionVariables.set(\"nameExcendMaxCaracters\", nameExcendMaxCaracters)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{nameExcendMaxCaracters}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com nome não fornecido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida se o nome do organizador não sofreu nenhuma alteração\", function () {\r",
+											"    const oldOrganizerName = pm.collectionVariables.get(\"oldOrganizerName\")\r",
+											"    const updatedOrganizerName = pm.response.json().updatedOrganizer.organizerName\r",
+											"    pm.expect(updatedOrganizerName).to.equal(oldOrganizerName);\r",
+											"})\r",
+											"\r",
+											"pm.collectionVariables.unset(\"oldOrganizerName\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const oldOrganizerName = pm.collectionVariables.get(\"organizerRecentCadastreName\")\r",
+											"pm.collectionVariables.set(\"oldOrganizerName\", oldOrganizerName)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com cnpj vazio",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Cnpj do organizador não pode estar vazio\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com cnpj em formato invalido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Cnpj deve estar no formato 99.999.999/9999-99\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"111.222.333-44\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com cnpj não fornecido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida se o nome do organizador não sofreu nenhuma alteração\", function () {\r",
+											"    const oldOrganizerCnpj = pm.collectionVariables.get(\"oldOrganizerCnpj\")\r",
+											"    const updatedOrganizerCnpj = pm.response.json().updatedOrganizer.organizerCnpj\r",
+											"    pm.expect(updatedOrganizerCnpj).to.equal(oldOrganizerCnpj);\r",
+											"})\r",
+											"\r",
+											"pm.collectionVariables.unset(\"oldOrganizerCnpj\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const oldOrganizerCnpj = pm.collectionVariables.get(\"organizerRecentCadastreCnpj\")\r",
+											"pm.collectionVariables.set(\"oldOrganizerCnpj\", oldOrganizerCnpj)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com email vazio",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Email do organizador não pode estar vazio\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com email em formato invalido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Email do organizador deve ser um email válido\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"lucas.com\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com email não fornecido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida se o email do organizador não sofreu nenhuma alteração\", function () {\r",
+											"    const oldOrganizerEmail = pm.collectionVariables.get(\"oldOrganizerEmail\")\r",
+											"    const updatedOrganizerEmail = pm.response.json().updatedOrganizer.organizerEmail\r",
+											"\r",
+											"    pm.expect(updatedOrganizerEmail).to.equal(oldOrganizerEmail);\r",
+											"})\r",
+											"\r",
+											"pm.collectionVariables.unset(\"oldOrganizerEmail\")\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const oldOrganizerEmail = pm.collectionVariables.get(\"organizerRecentCadastreEmail\")\r",
+											"pm.collectionVariables.set(\"oldOrganizerEmail\", oldOrganizerEmail)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com telefone sem DDD",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Telefone deve estar no formato (83)99999-9999\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": \"99999-9999\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com telefone vazio",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function use(fnName) {\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
+											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+											"    return eval(`(${raw})`);\r",
+											"}\r",
+											"\r",
+											"const adminToken = pm.collectionVariables.get(\"adminToken\")\r",
+											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida presença do campo 'organizerId'\", function () {\r",
+											"    pm.expect(pm.response.json().updatedOrganizer.organizerId).to.not.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida que o campo 'organizerPhoneNumber' foi definido para nulo\", function () {\r",
+											"    pm.expect(pm.response.json().updatedOrganizer.organizerPhoneNumber).to.be.null;\r",
+											"});\r",
+											"\r",
+											"deleteOrganizerRequest(adminToken, pm.response.json().organizerId)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com telefone nulo",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function use(fnName) {\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
+											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+											"    return eval(`(${raw})`);\r",
+											"}\r",
+											"\r",
+											"const adminToken = pm.collectionVariables.get(\"adminToken\")\r",
+											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida presença do campo 'organizerId'\", function () {\r",
+											"    pm.expect(pm.response.json().updatedOrganizer.organizerId).to.not.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida que o campo 'organizerPhoneNumber' foi definido para nulo\", function () {\r",
+											"    pm.expect(pm.response.json().updatedOrganizer.organizerPhoneNumber).to.be.null;\r",
+											"});\r",
+											"\r",
+											"deleteOrganizerRequest(adminToken, pm.response.json().organizerId)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-organizers",
+										"{{organizerRecentCadastreId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar organizador de eventos com telefone não fornecido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function use(fnName) {\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
+											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+											"    return eval(`(${raw})`);\r",
+											"}\r",
+											"\r",
+											"const adminToken = pm.collectionVariables.get(\"adminToken\")\r",
+											"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida se o telefone do organizador não sofreu nenhuma alteração\", function () {\r",
+											"    const oldOrganizerPhoneNumber = pm.collectionVariables.get(\"oldOrganizerPhoneNumber\")\r",
+											"    const updatedOrganizerPhoneNumber = pm.response.json().updatedOrganizer.organizerPhoneNumber\r",
+											"\r",
+											"    pm.expect(updatedOrganizerPhoneNumber).to.equal(oldOrganizerPhoneNumber);\r",
+											"})\r",
+											"\r",
+											"pm.collectionVariables.unset(\"oldOrganizerPhoneNumber\")\r",
+											"\r",
+											"deleteOrganizerRequest(adminToken, pm.response.json().organizerId)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const oldOrganizerPhoneNumber = pm.collectionVariables.get(\"organizerRecentCadastrePhoneNumber\")\r",
+											"pm.collectionVariables.set(\"oldOrganizerPhoneNumber\", oldOrganizerPhoneNumber)"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1166,16 +3349,6 @@
 								"packages": {},
 								"requests": {},
 								"exec": [
-									"function use(fnName) {\r",
-									"    const raw = pm.collectionVariables.get(fnName);\r",
-									"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-									"    return eval(`(${raw})`);\r",
-									"}\r",
-									"\r",
-									"const createOrganizerRequest = use(\"createOrganizerRequest\");\r",
-									"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
-									"\r",
-									"createOrganizerRequest(adminToken, true);\r",
 									""
 								]
 							}
@@ -1187,17 +3360,7 @@
 								"packages": {},
 								"requests": {},
 								"exec": [
-									"function use(fnName) {\r",
-									"    const raw = pm.collectionVariables.get(fnName);\r",
-									"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-									"    return eval(`(${raw})`);\r",
-									"}\r",
-									"\r",
-									"const deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r",
-									"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
-									"const organizerConflictId = pm.collectionVariables.get(\"organizerConflictId\");\r",
-									"\r",
-									"deleteOrganizerRequest(adminToken, organizerConflictId);"
+									""
 								]
 							}
 						}
@@ -1218,8 +3381,12 @@
 							"    return eval(`(${raw})`);\r",
 							"}\r",
 							"\r",
+							"const randomThreeDigits = use(\"randomThreeDigits\");\r",
 							"const createOrganizerRequest = use(\"createOrganizerRequest\");\r",
 							"const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
+							"\r",
+							"const validCnpj = `12.${randomThreeDigits()}.${randomThreeDigits()}/0001-90`\r",
+							"pm.collectionVariables.set(\"validCnpj\", validCnpj)\r",
 							"\r",
 							"createOrganizerRequest(adminToken);\r",
 							""
@@ -1263,10 +3430,12 @@
 									"script": {
 										"exec": [
 											"function use(fnName) {\r",
-											"    const raw = pm.globals.get(fnName);\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
 											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
 											"    return eval(`(${raw})`);\r",
 											"}\r",
+											"\r",
+											"const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
 											"\r",
 											"pm.test(\"Status code deve ser 201\", function () {\r",
 											"    pm.response.to.have.status(201);\r",
@@ -1276,7 +3445,6 @@
 											"    pm.expect(pm.response.json().categoryId).to.not.be.null;\r",
 											"});\r",
 											"\r",
-											"const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
 											"deleteCategoryRequest(pm.collectionVariables.get(\"adminToken\"), pm.response.json().categoryId)\r",
 											""
 										],
@@ -1433,6 +3601,514 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n    \"categoryName\": \"{{categoryRecentCadastreName}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-categories",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro categoria de eventos com nome vazio",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Nome da categoria não pode estar vazio\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"categoryName\": \"\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-categories",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro categoria de eventos com nome não fornecido",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (\"Nome da categoria é obrigatorio\").toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-categories",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro categoria de eventos com nome MENOR que o esperado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const minCategoryNameCharacters = pm.collectionVariables.get(\"minCategoryNameCharacters\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (`Nome da categoria deve conter no mínimo ${minCategoryNameCharacters} caracteres`).toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.unset(\"minCategoryNameCharacters\")\r",
+											"pm.collectionVariables.unset(\"categoryNameBelowMinCharacters\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const minCategoryNameCharacters = 3\r",
+											"const categoryNameBelowMinCharacters = \"a\".repeat(minCategoryNameCharacters - 1)\r",
+											"\r",
+											"pm.collectionVariables.set(\"minCategoryNameCharacters\", minCategoryNameCharacters)\r",
+											"pm.collectionVariables.set(\"categoryNameBelowMinCharacters\", categoryNameBelowMinCharacters)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"categoryName\": \"{{categoryNameBelowMinCharacters}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-categories",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro categoria de eventos com nome MAIOR que o esperado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const maxCategoryNameCharacters = pm.collectionVariables.get(\"maxCategoryNameCharacters\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (`Nome da categoria deve conter no máximo ${maxCategoryNameCharacters} caracteres`).toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.unset(\"maxCategoryNameCharacters\")\r",
+											"pm.collectionVariables.unset(\"nameExcendMaxCaracters\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const maxCategoryNameCharacters = 30\r",
+											"const categoryNameExceedMaxCharacters = \"a\".repeat(maxCategoryNameCharacters + 1)\r",
+											"\r",
+											"pm.collectionVariables.set(\"maxCategoryNameCharacters\", maxCategoryNameCharacters)\r",
+											"pm.collectionVariables.set(\"categoryNameExceedMaxCharacters\", categoryNameExceedMaxCharacters)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"categoryName\": \"{{categoryNameExceedMaxCharacters}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-categories",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro categoria de eventos com descrição vazia",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function use(fnName) {\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
+											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+											"    return eval(`(${raw})`);\r",
+											"}\r",
+											"\r",
+											"const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
+											"\r",
+											"pm.test(\"Status code deve ser 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida presença de campo 'categoryId'\", function () {\r",
+											"    pm.expect(pm.response.json().categoryId).to.not.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida o valor retonado para o campo 'categoryDescription'\", function () {\r",
+											"    pm.expect(pm.response.json().categoryDescription).to.be.null;\r",
+											"});\r",
+											"\r",
+											"deleteCategoryRequest(pm.collectionVariables.get(\"adminToken\"), pm.response.json().categoryId)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}} {{$randomInt}}\",\r\n    \"categoryDescription\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-categories",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro categoria de eventos com descrição MAIOR que o esperado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const maxCategoryDescriptionCharacters = pm.collectionVariables.get(\"maxCategoryDescriptionCharacters\")\r",
+											"\r",
+											"pm.test(\"Status code deve ser 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a propriedade message\", function () {\r",
+											"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
+											"    const expectMessage = (`Descrição da categoria deve conter no máximo ${maxCategoryDescriptionCharacters} caracteres`).toLowerCase()\r",
+											"    const currentMessage = pm.response.json().message.toLowerCase()\r",
+											"    pm.expect(currentMessage).to.include(expectMessage);\r",
+											"});\r",
+											"\r",
+											"pm.collectionVariables.unset(\"maxCategoryDescriptionCharacters\")\r",
+											"pm.collectionVariables.unset(\"categoryDescriptionExceedMaxCharacters\")"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const maxCategoryDescriptionCharacters = 300\r",
+											"const categoryDescriptionExceedMaxCharacters = \"a\".repeat(maxCategoryDescriptionCharacters + 1)\r",
+											"\r",
+											"pm.collectionVariables.set(\"maxCategoryDescriptionCharacters\", maxCategoryDescriptionCharacters)\r",
+											"pm.collectionVariables.set(\"categoryDescriptionExceedMaxCharacters\", categoryDescriptionExceedMaxCharacters)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}} {{$randomInt}}\", \r\n    \"categoryDescription\": \"{{categoryDescriptionExceedMaxCharacters}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{event_service_url}}/events-categories",
+									"host": [
+										"{{event_service_url}}"
+									],
+									"path": [
+										"events-categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastro categoria de eventos com descrição não fornecida",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"function use(fnName) {\r",
+											"    const raw = pm.collectionVariables.get(fnName);\r",
+											"    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
+											"    return eval(`(${raw})`);\r",
+											"}\r",
+											"\r",
+											"const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
+											"\r",
+											"pm.test(\"Status code deve ser 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida presença de campo 'categoryId'\", function () {\r",
+											"    pm.expect(pm.response.json().categoryId).to.not.be.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valida o valor retonado para o campo 'categoryDescription'\", function () {\r",
+											"    pm.expect(pm.response.json().categoryDescription).to.be.null;\r",
+											"});\r",
+											"\r",
+											"deleteCategoryRequest(pm.collectionVariables.get(\"adminToken\"), pm.response.json().categoryId)\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{adminToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}} {{$randomInt}}\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2061,13 +4737,18 @@
 											"    pm.expect(pm.response.json().categoryId).to.not.be.null;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Valida se o nome da categoria se mantem o mesmo\", function () {\r",
-											"    const oldCategoryName = pm.collectionVariables.get(\"categoryRecentCadastreName\")\r",
+											"pm.test(\"Valida se os dados da categoria se mantem os mesmos\", function () {\r",
+											"    const oldCategoryName = pm.collectionVariables.get(\"oldCategoryName\")\r",
 											"    const newCategoryName = pm.response.json().updatedCategory.categoryName\r",
 											"    pm.expect(newCategoryName).to.equal(oldCategoryName);\r",
+											"    \r",
+											"    const oldCategoryDescription = pm.collectionVariables.get(\"oldCategoryDescription\")\r",
+											"    const newCategoryName = pm.response.json().updatedCategory.categoryDescription\r",
+											"    pm.expect(newCategoryName).to.equal(oldCategoryDescription);\r",
 											"})\r",
 											"\r",
-											""
+											"pm.collectionVariables.unset(\"oldCategoryName\");\r",
+											"pm.collectionVariables.unset(\"oldCategoryDescription\");"
 										],
 										"type": "text/javascript",
 										"packages": {},
@@ -2078,7 +4759,11 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
-											""
+											"const oldCategoryName = pm.collectionVariables.get(\"categoryRecentCadastreName\")\r",
+											"const oldCategoryDescription = pm.collectionVariables.get(\"categoryRecentCadastreDescription\")\r",
+											"\r",
+											"pm.collectionVariables.set(\"oldCategoryName\", oldCategoryName);\r",
+											"pm.collectionVariables.set(\"oldCategoryDescription\", oldCategoryDescription);"
 										],
 										"type": "text/javascript",
 										"packages": {},
@@ -9005,6 +11690,8 @@
 					"    return String(pm.variables.replaceIn(\"{{$randomInt}}\")).padStart(3, \"0\");\r",
 					"}\r",
 					"\r",
+					"pm.collectionVariables.set(\"randomThreeDigits\", randomThreeDigits.toString())\r",
+					"\r",
 					"/* ---------------- AUTH ---------------- */\r",
 					"function performLogin(email, password, callback) {\r",
 					"    if (!email || !password) {\r",
@@ -9119,6 +11806,7 @@
 					"    );\r",
 					"}\r",
 					"\r",
+					"\r",
 					"function createOrganizerRequest(token, saveVariablesForConflict = false) {\r",
 					"    const randomThreeDigits = use(\"randomThreeDigits\");\r",
 					"\r",
@@ -9159,6 +11847,8 @@
 					"                    pm.collectionVariables.set(\"organizerRecentCadastreId\", json.organizerId);\r",
 					"                    pm.collectionVariables.set(\"organizerRecentCadastreName\", json.organizerName);\r",
 					"                    pm.collectionVariables.set(\"organizerRecentCadastreCnpj\", json.organizerCnpj);\r",
+					"                    pm.collectionVariables.set(\"organizerRecentCadastreEmail\", json.organizerEmail);\r",
+					"                    pm.collectionVariables.set(\"organizerRecentCadastrePhoneNumber\", json.organizerPhoneNumber);\r",
 					"                }\r",
 					"            }\r",
 					"        }\r",
@@ -9192,6 +11882,7 @@
 					"                } else {\r",
 					"                    pm.collectionVariables.set(\"categoryRecentCadastreId\", json.categoryId);\r",
 					"                    pm.collectionVariables.set(\"categoryRecentCadastreName\", json.categoryName);\r",
+					"                    pm.collectionVariables.set(\"categoryRecentCadastreDescription\", json.categoryDescription);\r",
 					"                }\r",
 					"            }\r",
 					"        }\r",
@@ -9234,7 +11925,9 @@
 					"        token,\r",
 					"        onSuccess: () => {\r",
 					"            pm.collectionVariables.unset(\"organizerRecentCadastreId\")\r",
+					"            pm.collectionVariables.unset(\"organizerRecentCadastreName\")\r",
 					"            pm.collectionVariables.unset(\"organizerRecentCadastreCnpj\")\r",
+					"            pm.collectionVariables.unset(\"organizerRecentCadastreEmail\");\r",
 					"        },\r",
 					"    });\r",
 					"}\r",
@@ -9299,7 +11992,6 @@
 					"    parseJwt,\r",
 					"    isTokenExpired,\r",
 					"    performLogin,\r",
-					"    randomThreeDigits,\r",
 					"    createEventRequest,\r",
 					"    createSimpleUserRequest,\r",
 					"    createOrganizerRequest,\r",
@@ -9367,8 +12059,8 @@
 					"const deleteSimpleUserRequest = use(\"deleteSimpleUserRequest\");\r",
 					"\r",
 					"// Carrega variáveis\r",
-					"const userToken    = pm.environment.get(\"userRecentCadastreToken\");\r",
-					"const userId       = pm.environment.get(\"userRecentCadastreId\");\r",
+					"const userToken = pm.environment.get(\"userRecentCadastreToken\");\r",
+					"const userId = pm.environment.get(\"userRecentCadastreId\");\r",
 					"\r",
 					"console.warn(\"executando limpeza dos dados\");\r",
 					"\r",
@@ -9457,10 +12149,6 @@
 			"value": ""
 		},
 		{
-			"key": "organizerRecentCadastreName",
-			"value": ""
-		},
-		{
 			"key": "safeDeleteRequest",
 			"value": ""
 		},
@@ -9486,6 +12174,22 @@
 		},
 		{
 			"key": "categoryConflictName",
+			"value": ""
+		},
+		{
+			"key": "organizerRecentCadastrePhoneNumber",
+			"value": ""
+		},
+		{
+			"key": "validCnpj",
+			"value": ""
+		},
+		{
+			"key": "categoryNameExceedMaxCharacters",
+			"value": ""
+		},
+		{
+			"key": "organizerNameExceedMaxCharacters",
 			"value": ""
 		}
 	]
