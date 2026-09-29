@@ -1202,6 +1202,17 @@
               },
               "response": []
             }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createOrganizerRequest = use(\"createOrganizerRequest\");\r\nconst adminToken = pm.environment.get(\"adminToken\");\r\n\r\ncreateOrganizerRequest(adminToken);"
+                ]
+              }
+            }
           ]
         },
         {
@@ -1213,23 +1224,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 200\", function () {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve valicar a presenca da propriedade 'message'\", function () {\r",
-                      "    pm.response.to.have.jsonBody('message');\r",
-                      "})\r",
-                      "\r",
-                      "pm.test(\"Deve validar o valor da propriedade 'message'\", function () {\r",
-                      "    const expectMessage = \"Organizador excluído com sucesso\".toLowerCase();\r",
-                      "    pm.expect(pm.response.text().toLowerCase()).to.include(expectMessage);\r",
-                      "})"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Deve valicar a presenca da propriedade 'message'\", function () {\r\n    pm.response.to.have.jsonBody('message');\r\n})\r\n\r\npm.test(\"Deve validar o valor da propriedade 'message'\", function () {\r\n    const expectMessage = \"Organizador excluído com sucesso\".toLowerCase();\r\n    pm.expect(pm.response.text().toLowerCase()).to.include(expectMessage);\r\n})"
+                    ]
                   }
                 }
               ],
@@ -1245,7 +1243,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
                   "host": [
@@ -1265,23 +1268,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 404\", function () {\r",
-                      "    pm.response.to.have.status(404);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Organizador de eventos não encontrado\").toLowerCase()\r",
-                      "    pm.expect(pm.response.text().toLowerCase()).to.include(expectMessage);\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 404\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Organizador de eventos não encontrado\").toLowerCase()\r\n    pm.expect(pm.response.text().toLowerCase()).to.include(expectMessage);\r\n});"
+                    ]
                   }
                 }
               ],
@@ -1297,7 +1287,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-organizers/c8be4e1c-5930-4fbb-885c-ebb0aa6ddbcf",
                   "host": [
@@ -1317,22 +1312,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    pm.expect(pm.response.text()).to.include((\"O id deve estar no formato de uuid v4\").toLowerCase());\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    pm.expect(pm.response.text()).to.include((\"O id deve estar no formato de uuid v4\").toLowerCase());\r\n});"
+                    ]
                   }
                 }
               ],
@@ -1348,7 +1331,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-organizers/c8be4",
                   "host": [
@@ -1368,34 +1356,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 403\", function () {\r",
-                      "    pm.response.to.have.status(403);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'message'\", function () {\r",
-                      "    pm.expect(pm.response.json().message).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida mensagem de sucesso\", function () {\r",
-                      "    const expectMessage = (\"Permissão insuficiente\").toLowerCase()\r",
-                      "    pm.expect(pm.response.json().message.toLowerCase()).to.include(expectMessage);\r",
-                      "})"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                },
-                {
-                  "listen": "prerequest",
-                  "script": {
                     "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                      "pm.test(\"Status code deve ser 403\", function () {\r\n    pm.response.to.have.status(403);\r\n});\r\n\r\npm.test(\"Valida presença do campo 'message'\", function () {\r\n    pm.expect(pm.response.json().message).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida mensagem de sucesso\", function () {\r\n    const expectMessage = (\"Permissão insuficiente\").toLowerCase()\r\n    pm.expect(pm.response.json().message.toLowerCase()).to.include(expectMessage);\r\n})"
+                    ]
                   }
                 }
               ],
@@ -1411,7 +1375,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_USER"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
                   "host": [
@@ -1494,22 +1463,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    pm.expect(pm.response.text()).to.include((\"O id não pode ser vazio\").toLowerCase());\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    pm.expect(pm.response.text()).to.include((\"O id não pode ser vazio\").toLowerCase());\r\n});"
+                    ]
                   }
                 }
               ],
@@ -1525,7 +1482,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-organizers/",
                   "host": [
@@ -1539,6 +1501,17 @@
               },
               "response": []
             }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createOrganizerRequest = use(\"createOrganizerRequest\");\r\nconst adminToken = pm.environment.get(\"adminToken\");\r\n\r\ncreateOrganizerRequest(adminToken);"
+                ]
+              }
+            }
           ]
         },
         {
@@ -1550,46 +1523,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 200\", function () {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'message'\", function () {\r",
-                      "    pm.expect(pm.response.json().message).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida mensagem de sucesso\", function () {\r",
-                      "    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r",
-                      "    pm.expect(pm.response.json().message.toLowerCase()).to.equal(expectMessage);\r",
-                      "})\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'organizerId'\", function () {\r",
-                      "    pm.expect(pm.response.json().organizerId).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida se o nome do organizador foi atualizado\", function () {\r",
-                      "    const oldOrganizerName = pm.collectionVariables.get(\"organizerRecentCadastreName\")\r",
-                      "    const newOrganizerName = pm.response.json().updatedOrganizer.organizerName\r",
-                      "    pm.expect(newOrganizerName).to.not.equal(oldOrganizerName);\r",
-                      "})\r",
-                      "\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                },
-                {
-                  "listen": "prerequest",
-                  "script": {
                     "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                      "pm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Valida presença do campo 'message'\", function () {\r\n    pm.expect(pm.response.json().message).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida mensagem de sucesso\", function () {\r\n    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r\n    pm.expect(pm.response.json().message.toLowerCase()).to.equal(expectMessage);\r\n})\r\n\r\npm.test(\"Valida presença do campo 'organizerId'\", function () {\r\n    pm.expect(pm.response.json().organizerId).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida se o nome do organizador foi atualizado\", function () {\r\n    const oldOrganizerName = pm.collectionVariables.get(\"organizerRecentCadastreName\")\r\n    const newOrganizerName = pm.response.json().updatedOrganizer.organizerName\r\n    pm.expect(newOrganizerName).to.not.equal(oldOrganizerName);\r\n})\r\n\r\n"
+                    ]
                   }
                 }
               ],
@@ -1605,7 +1542,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -1634,70 +1576,19 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 200\", function () {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'message'\", function () {\r",
-                      "    pm.expect(pm.response.json().message).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida mensagem de sucesso\", function () {\r",
-                      "    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r",
-                      "    pm.expect(pm.response.json().message.toLowerCase()).to.equal(expectMessage);\r",
-                      "})\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'organizerId'\", function () {\r",
-                      "    pm.expect(pm.response.json().organizerId).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida se o os dados do organizador se mantiveram os mesmos\", function () {\r",
-                      "    const oldOrganizerName = pm.collectionVariables.get(\"oldOrganizerName\")\r",
-                      "    const updatedOrganizerName = pm.response.json().updatedOrganizer.organizerName\r",
-                      "    pm.expect(updatedOrganizerName).to.equal(oldOrganizerName);\r",
-                      "\r",
-                      "    const oldOrganizerCnpj = pm.collectionVariables.get(\"oldOrganizerCnpj\")\r",
-                      "    const updatedOrganizerCnpj = pm.response.json().updatedOrganizer.organizerCnpj\r",
-                      "    pm.expect(updatedOrganizerCnpj).to.equal(oldOrganizerCnpj);\r",
-                      "\r",
-                      "    const oldOrganizerEmail = pm.collectionVariables.get(\"oldOrganizerEmail\")\r",
-                      "    const updatedOrganizerEmail = pm.response.json().updatedOrganizer.organizerEmail\r",
-                      "    pm.expect(updatedOrganizerEmail).to.equal(oldOrganizerEmail);\r",
-                      "\r",
-                      "    const oldOrganizerPhoneNumber = pm.collectionVariables.get(\"oldOrganizerPhoneNumber\")\r",
-                      "    const updatedOrganizerPhoneNumber = pm.response.json().updatedOrganizer.organizerPhoneNumber\r",
-                      "    pm.expect(updatedOrganizerPhoneNumber).to.equal(oldOrganizerPhoneNumber);\r",
-                      "})\r",
-                      "\r",
-                      "pm.collectionVariables.unset(\"oldOrganizerName\");\r",
-                      "pm.collectionVariables.unset(\"oldOrganizerEmail\");\r",
-                      "pm.collectionVariables.unset(\"oldOrganizerCnpj\");\r",
-                      "pm.collectionVariables.unset(\"oldOrganizerPhoneNumber\");\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Valida presença do campo 'message'\", function () {\r\n    pm.expect(pm.response.json().message).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida mensagem de sucesso\", function () {\r\n    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r\n    pm.expect(pm.response.json().message.toLowerCase()).to.equal(expectMessage);\r\n})\r\n\r\npm.test(\"Valida presença do campo 'organizerId'\", function () {\r\n    pm.expect(pm.response.json().organizerId).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida se o os dados do organizador se mantiveram os mesmos\", function () {\r\n    const oldOrganizerName = pm.collectionVariables.get(\"oldOrganizerName\")\r\n    const updatedOrganizerName = pm.response.json().updatedOrganizer.organizerName\r\n    pm.expect(updatedOrganizerName).to.equal(oldOrganizerName);\r\n\r\n    const oldOrganizerCnpj = pm.collectionVariables.get(\"oldOrganizerCnpj\")\r\n    const updatedOrganizerCnpj = pm.response.json().updatedOrganizer.organizerCnpj\r\n    pm.expect(updatedOrganizerCnpj).to.equal(oldOrganizerCnpj);\r\n\r\n    const oldOrganizerEmail = pm.collectionVariables.get(\"oldOrganizerEmail\")\r\n    const updatedOrganizerEmail = pm.response.json().updatedOrganizer.organizerEmail\r\n    pm.expect(updatedOrganizerEmail).to.equal(oldOrganizerEmail);\r\n\r\n    const oldOrganizerPhoneNumber = pm.collectionVariables.get(\"oldOrganizerPhoneNumber\")\r\n    const updatedOrganizerPhoneNumber = pm.response.json().updatedOrganizer.organizerPhoneNumber\r\n    pm.expect(updatedOrganizerPhoneNumber).to.equal(oldOrganizerPhoneNumber);\r\n})\r\n\r\npm.collectionVariables.unset(\"oldOrganizerName\");\r\npm.collectionVariables.unset(\"oldOrganizerEmail\");\r\npm.collectionVariables.unset(\"oldOrganizerCnpj\");\r\npm.collectionVariables.unset(\"oldOrganizerPhoneNumber\");\r\n"
+                    ]
                   }
                 },
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "const oldOrganizerName = pm.collectionVariables.get(\"organizerRecentCadastreName\")\r",
-                      "const oldOrganizerEmail = pm.collectionVariables.get(\"organizerRecentCadastreEmail\")\r",
-                      "const oldOrganizerCnpj = pm.collectionVariables.get(\"organizerRecentCadastreCnpj\")\r",
-                      "const oldOrganizerPhoneNumber = pm.collectionVariables.get(\"organizerRecentCadastrePhoneNumber\")\r",
-                      "\r",
-                      "pm.collectionVariables.set(\"oldOrganizerName\", oldOrganizerName);\r",
-                      "pm.collectionVariables.set(\"oldOrganizerEmail\", oldOrganizerEmail);\r",
-                      "pm.collectionVariables.set(\"oldOrganizerCnpj\", oldOrganizerCnpj);\r",
-                      "pm.collectionVariables.set(\"oldOrganizerPhoneNumber\", oldOrganizerPhoneNumber);"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const oldOrganizerName = pm.collectionVariables.get(\"organizerRecentCadastreName\")\r\nconst oldOrganizerEmail = pm.collectionVariables.get(\"organizerRecentCadastreEmail\")\r\nconst oldOrganizerCnpj = pm.collectionVariables.get(\"organizerRecentCadastreCnpj\")\r\nconst oldOrganizerPhoneNumber = pm.collectionVariables.get(\"organizerRecentCadastrePhoneNumber\")\r\n\r\npm.collectionVariables.set(\"oldOrganizerName\", oldOrganizerName);\r\npm.collectionVariables.set(\"oldOrganizerEmail\", oldOrganizerEmail);\r\npm.collectionVariables.set(\"oldOrganizerCnpj\", oldOrganizerCnpj);\r\npm.collectionVariables.set(\"oldOrganizerPhoneNumber\", oldOrganizerPhoneNumber);"
+                    ]
                   }
                 }
               ],
@@ -1713,7 +1604,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{organizerRecentCadastreName}}\",\r\n    \"organizerCnpj\": \"{{organizerRecentCadastreCnpj}}\",\r\n    \"organizerEmail\": \"{{organizerRecentCadastreEmail}}\", \r\n    \"organizerPhoneNumber\": \"{{organizerRecentCadastrePhoneNumber}}\" \r\n}",
@@ -1742,22 +1638,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    pm.expect(pm.response.text()).to.include((\"O id deve estar no formato de uuid v4\").toLowerCase());\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    pm.expect(pm.response.text()).to.include((\"O id deve estar no formato de uuid v4\").toLowerCase());\r\n});"
+                    ]
                   }
                 }
               ],
@@ -1773,7 +1657,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -1874,34 +1763,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 403\", function () {\r",
-                      "    pm.response.to.have.status(403);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'message'\", function () {\r",
-                      "    pm.expect(pm.response.json().message).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida mensagem de sucesso\", function () {\r",
-                      "    const expectMessage = (\"Permissão insuficiente\").toLowerCase()\r",
-                      "    pm.expect(pm.response.json().message.toLowerCase()).to.include(expectMessage);\r",
-                      "})"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                },
-                {
-                  "listen": "prerequest",
-                  "script": {
                     "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                      "pm.test(\"Status code deve ser 403\", function () {\r\n    pm.response.to.have.status(403);\r\n});\r\n\r\npm.test(\"Valida presença do campo 'message'\", function () {\r\n    pm.expect(pm.response.json().message).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida mensagem de sucesso\", function () {\r\n    const expectMessage = (\"Permissão insuficiente\").toLowerCase()\r\n    pm.expect(pm.response.json().message.toLowerCase()).to.include(expectMessage);\r\n})"
+                    ]
                   }
                 }
               ],
@@ -1917,7 +1782,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_USER"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -1946,56 +1816,19 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "function use(fnName) {\r",
-                      "    const raw = pm.collectionVariables.get(fnName);\r",
-                      "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-                      "    return eval(`(${raw})`);\r",
-                      "}\r",
-                      "\r",
-                      "const deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r",
-                      "const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
-                      "const organizerConflictId = pm.collectionVariables.get(\"organizerConflictId\");\r",
-                      "\r",
-                      "pm.test(\"Status code deve ser 409\", function () {\r",
-                      "    pm.response.to.have.status(409);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'message'\", function () {\r",
-                      "    pm.expect(pm.response.json().message).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida mensagem de sucesso\", function () {\r",
-                      "    const expectMessage = (\"Este organizador já está cadastrado\").toLowerCase()\r",
-                      "    pm.expect(pm.response.json().message.toLowerCase()).to.equal(expectMessage);\r",
-                      "})\r",
-                      "\r",
-                      "deleteOrganizerRequest(adminToken, organizerConflictId);"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\nconst organizerConflictId = pm.collectionVariables.get(\"organizerConflictId\");\r\n\r\npm.test(\"Status code deve ser 409\", function () {\r\n    pm.response.to.have.status(409);\r\n});\r\n\r\npm.test(\"Valida presença do campo 'message'\", function () {\r\n    pm.expect(pm.response.json().message).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida mensagem de sucesso\", function () {\r\n    const expectMessage = (\"Este organizador já está cadastrado\").toLowerCase()\r\n    pm.expect(pm.response.json().message.toLowerCase()).to.equal(expectMessage);\r\n})\r\n\r\ndeleteOrganizerRequest(adminToken, organizerConflictId);"
+                    ]
                   }
                 },
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "function use(fnName) {\r",
-                      "    const raw = pm.collectionVariables.get(fnName);\r",
-                      "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-                      "    return eval(`(${raw})`);\r",
-                      "}\r",
-                      "\r",
-                      "const createOrganizerRequest = use(\"createOrganizerRequest\");\r",
-                      "const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
-                      "\r",
-                      "createOrganizerRequest(adminToken, true);\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createOrganizerRequest = use(\"createOrganizerRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\n\r\ncreateOrganizerRequest(adminToken, true);\r\n"
+                    ]
                   }
                 }
               ],
@@ -2011,7 +1844,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{organizerConflictCnpj}}\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -2040,56 +1878,19 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "function use(fnName) {\r",
-                      "    const raw = pm.collectionVariables.get(fnName);\r",
-                      "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-                      "    return eval(`(${raw})`);\r",
-                      "}\r",
-                      "\r",
-                      "const deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r",
-                      "const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
-                      "const organizerConflictId = pm.collectionVariables.get(\"organizerConflictId\");\r",
-                      "\r",
-                      "pm.test(\"Status code deve ser 409\", function () {\r",
-                      "    pm.response.to.have.status(409);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'message'\", function () {\r",
-                      "    pm.expect(pm.response.json().message).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida mensagem de erro\", function () {\r",
-                      "    const expectMessage = (\"Este organizador já está cadastrado\").toLowerCase()\r",
-                      "    pm.expect(pm.response.json().message.toLowerCase()).to.equal(expectMessage);\r",
-                      "})\r",
-                      "\r",
-                      "deleteOrganizerRequest(adminToken, organizerConflictId);"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\nconst organizerConflictId = pm.collectionVariables.get(\"organizerConflictId\");\r\n\r\npm.test(\"Status code deve ser 409\", function () {\r\n    pm.response.to.have.status(409);\r\n});\r\n\r\npm.test(\"Valida presença do campo 'message'\", function () {\r\n    pm.expect(pm.response.json().message).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida mensagem de erro\", function () {\r\n    const expectMessage = (\"Este organizador já está cadastrado\").toLowerCase()\r\n    pm.expect(pm.response.json().message.toLowerCase()).to.equal(expectMessage);\r\n})\r\n\r\ndeleteOrganizerRequest(adminToken, organizerConflictId);"
+                    ]
                   }
                 },
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "function use(fnName) {\r",
-                      "    const raw = pm.collectionVariables.get(fnName);\r",
-                      "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-                      "    return eval(`(${raw})`);\r",
-                      "}\r",
-                      "\r",
-                      "const createOrganizerRequest = use(\"createOrganizerRequest\");\r",
-                      "const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
-                      "\r",
-                      "createOrganizerRequest(adminToken, true);\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createOrganizerRequest = use(\"createOrganizerRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\n\r\ncreateOrganizerRequest(adminToken, true);\r\n"
+                    ]
                   }
                 }
               ],
@@ -2105,7 +1906,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{organizerConflictEmail}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
@@ -2134,24 +1940,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Nome do organizador não pode estar vazio\").toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Nome do organizador não pode estar vazio\").toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});"
+                    ]
                   }
                 }
               ],
@@ -2167,7 +1959,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -2196,44 +1993,19 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "const minNameCaracters = pm.collectionVariables.get(\"minNameCaracters\")\r",
-                      "\r",
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (`Nome do organizador deve conter no mínimo ${minNameCaracters} caracteres`).toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});\r",
-                      "\r",
-                      "pm.collectionVariables.unset(\"minNameCaracters\")\r",
-                      "pm.collectionVariables.unset(\"nameNotWithCaracters\")"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const minNameCaracters = pm.collectionVariables.get(\"minNameCaracters\")\r\n\r\npm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (`Nome do organizador deve conter no mínimo ${minNameCaracters} caracteres`).toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});\r\n\r\npm.collectionVariables.unset(\"minNameCaracters\")\r\npm.collectionVariables.unset(\"nameNotWithCaracters\")"
+                    ]
                   }
                 },
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "const minNameCaracters = 3\r",
-                      "const nameNotWithCaracters = (\"a\").repeat(minNameCaracters - 1)\r",
-                      "\r",
-                      "pm.collectionVariables.set(\"minNameCaracters\", minNameCaracters)\r",
-                      "pm.collectionVariables.set(\"nameNotWithCaracters\", nameNotWithCaracters)"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const minNameCaracters = 3\r\nconst nameNotWithCaracters = (\"a\").repeat(minNameCaracters - 1)\r\n\r\npm.collectionVariables.set(\"minNameCaracters\", minNameCaracters)\r\npm.collectionVariables.set(\"nameNotWithCaracters\", nameNotWithCaracters)"
+                    ]
                   }
                 }
               ],
@@ -2249,7 +2021,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"a\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -2278,44 +2055,19 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "const maxNameCaracters = pm.collectionVariables.get(\"maxNameCaracters\")\r",
-                      "\r",
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (`Nome do organizador deve conter no máximo ${maxNameCaracters} caracteres`).toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});\r",
-                      "\r",
-                      "pm.collectionVariables.unset(\"maxNameCaracters\")\r",
-                      "pm.collectionVariables.unset(\"nameExcendMaxCaracters\")"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const maxNameCaracters = pm.collectionVariables.get(\"maxNameCaracters\")\r\n\r\npm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (`Nome do organizador deve conter no máximo ${maxNameCaracters} caracteres`).toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});\r\n\r\npm.collectionVariables.unset(\"maxNameCaracters\")\r\npm.collectionVariables.unset(\"nameExcendMaxCaracters\")"
+                    ]
                   }
                 },
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "const maxNameCaracters = 100\r",
-                      "const nameExcendMaxCaracters = (\"a\").repeat(maxNameCaracters + 1)\r",
-                      "\r",
-                      "pm.collectionVariables.set(\"maxNameCaracters\", maxNameCaracters)\r",
-                      "pm.collectionVariables.set(\"nameExcendMaxCaracters\", nameExcendMaxCaracters)"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const maxNameCaracters = 100\r\nconst nameExcendMaxCaracters = (\"a\").repeat(maxNameCaracters + 1)\r\n\r\npm.collectionVariables.set(\"maxNameCaracters\", maxNameCaracters)\r\npm.collectionVariables.set(\"nameExcendMaxCaracters\", nameExcendMaxCaracters)"
+                    ]
                   }
                 }
               ],
@@ -2331,7 +2083,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{nameExcendMaxCaracters}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -2360,44 +2117,19 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 200\", function () {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida se o nome do organizador não sofreu nenhuma alteração\", function () {\r",
-                      "    const oldOrganizerName = pm.collectionVariables.get(\"oldOrganizerName\")\r",
-                      "    const updatedOrganizerName = pm.response.json().updatedOrganizer.organizerName\r",
-                      "    pm.expect(updatedOrganizerName).to.equal(oldOrganizerName);\r",
-                      "})\r",
-                      "\r",
-                      "pm.collectionVariables.unset(\"oldOrganizerName\")"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});\r\n\r\npm.test(\"Valida se o nome do organizador não sofreu nenhuma alteração\", function () {\r\n    const oldOrganizerName = pm.collectionVariables.get(\"oldOrganizerName\")\r\n    const updatedOrganizerName = pm.response.json().updatedOrganizer.organizerName\r\n    pm.expect(updatedOrganizerName).to.equal(oldOrganizerName);\r\n})\r\n\r\npm.collectionVariables.unset(\"oldOrganizerName\")"
+                    ]
                   }
                 },
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "const oldOrganizerName = pm.collectionVariables.get(\"organizerRecentCadastreName\")\r",
-                      "pm.collectionVariables.set(\"oldOrganizerName\", oldOrganizerName)"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const oldOrganizerName = pm.collectionVariables.get(\"organizerRecentCadastreName\")\r\npm.collectionVariables.set(\"oldOrganizerName\", oldOrganizerName)"
+                    ]
                   }
                 }
               ],
@@ -2413,7 +2145,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
@@ -2442,24 +2179,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Cnpj do organizador não pode estar vazio\").toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Cnpj do organizador não pode estar vazio\").toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});"
+                    ]
                   }
                 }
               ],
@@ -2475,7 +2198,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -2504,24 +2232,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Cnpj deve estar no formato 99.999.999/9999-99\").toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Cnpj deve estar no formato 99.999.999/9999-99\").toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});"
+                    ]
                   }
                 }
               ],
@@ -2537,7 +2251,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"111.222.333-44\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -2566,44 +2285,19 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 200\", function () {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida se o nome do organizador não sofreu nenhuma alteração\", function () {\r",
-                      "    const oldOrganizerCnpj = pm.collectionVariables.get(\"oldOrganizerCnpj\")\r",
-                      "    const updatedOrganizerCnpj = pm.response.json().updatedOrganizer.organizerCnpj\r",
-                      "    pm.expect(updatedOrganizerCnpj).to.equal(oldOrganizerCnpj);\r",
-                      "})\r",
-                      "\r",
-                      "pm.collectionVariables.unset(\"oldOrganizerCnpj\")"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});\r\n\r\npm.test(\"Valida se o cnpj do organizador não sofreu nenhuma alteração\", function () {\r\n    const oldOrganizerCnpj = pm.collectionVariables.get(\"oldOrganizerCnpj\")\r\n    const updatedOrganizerCnpj = pm.response.json().updatedOrganizer.organizerCnpj\r\n    pm.expect(updatedOrganizerCnpj).to.equal(oldOrganizerCnpj);\r\n})\r\n\r\npm.collectionVariables.unset(\"oldOrganizerCnpj\")"
+                    ]
                   }
                 },
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "const oldOrganizerCnpj = pm.collectionVariables.get(\"organizerRecentCadastreCnpj\")\r",
-                      "pm.collectionVariables.set(\"oldOrganizerCnpj\", oldOrganizerCnpj)"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const oldOrganizerCnpj = pm.collectionVariables.get(\"organizerRecentCadastreCnpj\")\r\npm.collectionVariables.set(\"oldOrganizerCnpj\", oldOrganizerCnpj)"
+                    ]
                   }
                 }
               ],
@@ -2619,7 +2313,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -2648,24 +2347,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Email do organizador não pode estar vazio\").toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Email do organizador não pode estar vazio\").toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});"
+                    ]
                   }
                 }
               ],
@@ -2681,7 +2366,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -2710,24 +2400,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Email do organizador deve ser um email válido\").toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Email do organizador deve ser um email válido\").toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});"
+                    ]
                   }
                 }
               ],
@@ -2743,7 +2419,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"lucas.com\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\"\r\n}",
@@ -2772,46 +2453,19 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 200\", function () {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida se o email do organizador não sofreu nenhuma alteração\", function () {\r",
-                      "    const oldOrganizerEmail = pm.collectionVariables.get(\"oldOrganizerEmail\")\r",
-                      "    const updatedOrganizerEmail = pm.response.json().updatedOrganizer.organizerEmail\r",
-                      "\r",
-                      "    pm.expect(updatedOrganizerEmail).to.equal(oldOrganizerEmail);\r",
-                      "})\r",
-                      "\r",
-                      "pm.collectionVariables.unset(\"oldOrganizerEmail\")\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});\r\n\r\npm.test(\"Valida se o email do organizador não sofreu nenhuma alteração\", function () {\r\n    const oldOrganizerEmail = pm.collectionVariables.get(\"oldOrganizerEmail\")\r\n    const updatedOrganizerEmail = pm.response.json().updatedOrganizer.organizerEmail\r\n\r\n    pm.expect(updatedOrganizerEmail).to.equal(oldOrganizerEmail);\r\n})\r\n\r\npm.collectionVariables.unset(\"oldOrganizerEmail\")\r\n"
+                    ]
                   }
                 },
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "const oldOrganizerEmail = pm.collectionVariables.get(\"organizerRecentCadastreEmail\")\r",
-                      "pm.collectionVariables.set(\"oldOrganizerEmail\", oldOrganizerEmail)"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const oldOrganizerEmail = pm.collectionVariables.get(\"organizerRecentCadastreEmail\")\r\npm.collectionVariables.set(\"oldOrganizerEmail\", oldOrganizerEmail)"
+                    ]
                   }
                 }
               ],
@@ -2827,7 +2481,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -2856,24 +2515,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Telefone deve estar no formato (83)99999-9999\").toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Telefone deve estar no formato (83)99999-9999\").toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});"
+                    ]
                   }
                 }
               ],
@@ -2889,7 +2534,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": \"99999-9999\"\r\n}",
@@ -2918,33 +2568,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "function use(fnName) {\r",
-                      "    const raw = pm.collectionVariables.get(fnName);\r",
-                      "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-                      "    return eval(`(${raw})`);\r",
-                      "}\r",
-                      "\r",
-                      "const adminToken = pm.collectionVariables.get(\"adminToken\")\r",
-                      "const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
-                      "\r",
-                      "pm.test(\"Status code deve ser 200\", function () {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'organizerId'\", function () {\r",
-                      "    pm.expect(pm.response.json().updatedOrganizer.organizerId).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida que o campo 'organizerPhoneNumber' foi definido para nulo\", function () {\r",
-                      "    pm.expect(pm.response.json().updatedOrganizer.organizerPhoneNumber).to.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "deleteOrganizerRequest(adminToken, pm.response.json().organizerId)"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\")\r\nconst deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r\n\r\npm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Valida presença do campo 'organizerId'\", function () {\r\n    pm.expect(pm.response.json().updatedOrganizer.organizerId).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida que o campo 'organizerPhoneNumber' foi definido para nulo\", function () {\r\n    pm.expect(pm.response.json().updatedOrganizer.organizerPhoneNumber).to.be.null;\r\n});\r\n\r\ndeleteOrganizerRequest(adminToken, pm.response.json().organizerId)"
+                    ]
                   }
                 }
               ],
@@ -2960,7 +2587,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": \"\"\r\n}",
@@ -2989,33 +2621,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "function use(fnName) {\r",
-                      "    const raw = pm.collectionVariables.get(fnName);\r",
-                      "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-                      "    return eval(`(${raw})`);\r",
-                      "}\r",
-                      "\r",
-                      "const adminToken = pm.collectionVariables.get(\"adminToken\")\r",
-                      "const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
-                      "\r",
-                      "pm.test(\"Status code deve ser 200\", function () {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'organizerId'\", function () {\r",
-                      "    pm.expect(pm.response.json().updatedOrganizer.organizerId).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida que o campo 'organizerPhoneNumber' foi definido para nulo\", function () {\r",
-                      "    pm.expect(pm.response.json().updatedOrganizer.organizerPhoneNumber).to.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "deleteOrganizerRequest(adminToken, pm.response.json().organizerId)"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\")\r\nconst deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r\n\r\npm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Valida presença do campo 'organizerId'\", function () {\r\n    pm.expect(pm.response.json().updatedOrganizer.organizerId).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida que o campo 'organizerPhoneNumber' foi definido para nulo\", function () {\r\n    pm.expect(pm.response.json().updatedOrganizer.organizerPhoneNumber).to.be.null;\r\n});\r\n\r\ndeleteOrganizerRequest(adminToken, pm.response.json().organizerId)"
+                    ]
                   }
                 }
               ],
@@ -3031,7 +2640,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\",\r\n    \"organizerPhoneNumber\": null\r\n}",
@@ -3060,56 +2674,19 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "function use(fnName) {\r",
-                      "    const raw = pm.collectionVariables.get(fnName);\r",
-                      "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-                      "    return eval(`(${raw})`);\r",
-                      "}\r",
-                      "\r",
-                      "const adminToken = pm.collectionVariables.get(\"adminToken\")\r",
-                      "const deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r",
-                      "\r",
-                      "pm.test(\"Status code deve ser 200\", function () {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r",
-                      "    const currentMessage = pm.response.json().message.toLowerCase()\r",
-                      "    pm.expect(currentMessage).to.include(expectMessage);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida se o telefone do organizador não sofreu nenhuma alteração\", function () {\r",
-                      "    const oldOrganizerPhoneNumber = pm.collectionVariables.get(\"oldOrganizerPhoneNumber\")\r",
-                      "    const updatedOrganizerPhoneNumber = pm.response.json().updatedOrganizer.organizerPhoneNumber\r",
-                      "\r",
-                      "    pm.expect(updatedOrganizerPhoneNumber).to.equal(oldOrganizerPhoneNumber);\r",
-                      "})\r",
-                      "\r",
-                      "pm.collectionVariables.unset(\"oldOrganizerPhoneNumber\")\r",
-                      "\r",
-                      "deleteOrganizerRequest(adminToken, pm.response.json().organizerId)"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\")\r\nconst deleteOrganizerRequest = use(\"deleteOrganizerRequest\")\r\n\r\npm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Organizador atualizado com sucesso\").toLowerCase()\r\n    const currentMessage = pm.response.json().message.toLowerCase()\r\n    pm.expect(currentMessage).to.include(expectMessage);\r\n});\r\n\r\npm.test(\"Valida se o telefone do organizador não sofreu nenhuma alteração\", function () {\r\n    const oldOrganizerPhoneNumber = pm.collectionVariables.get(\"oldOrganizerPhoneNumber\")\r\n    const updatedOrganizerPhoneNumber = pm.response.json().updatedOrganizer.organizerPhoneNumber\r\n\r\n    pm.expect(updatedOrganizerPhoneNumber).to.equal(oldOrganizerPhoneNumber);\r\n})\r\n\r\npm.collectionVariables.unset(\"oldOrganizerPhoneNumber\")\r\n\r\ndeleteOrganizerRequest(adminToken, pm.response.json().organizerId)"
+                    ]
                   }
                 },
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "const oldOrganizerPhoneNumber = pm.collectionVariables.get(\"organizerRecentCadastrePhoneNumber\")\r",
-                      "pm.collectionVariables.set(\"oldOrganizerPhoneNumber\", oldOrganizerPhoneNumber)"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const oldOrganizerPhoneNumber = pm.collectionVariables.get(\"organizerRecentCadastrePhoneNumber\")\r\npm.collectionVariables.set(\"oldOrganizerPhoneNumber\", oldOrganizerPhoneNumber)"
+                    ]
                   }
                 }
               ],
@@ -3125,7 +2702,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\"\r\n}",
@@ -3154,21 +2736,8 @@
               "listen": "prerequest",
               "script": {
                 "type": "text/javascript",
-                "packages": {},
-                "requests": {},
                 "exec": [
-                  ""
-                ]
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {},
-                "exec": [
-                  ""
+                  "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createOrganizerRequest = use(\"createOrganizerRequest\");\r\nconst adminToken = pm.environment.get(\"adminToken\");\r\n\r\ncreateOrganizerRequest(adminToken);"
                 ]
               }
             }
@@ -12115,6 +11684,26 @@
     },
     {
       "key": "organizerNameExceedMaxCharacters",
+      "value": ""
+    },
+    {
+      "key": "organizerRecentCadastreId",
+      "value": ""
+    },
+    {
+      "key": "organizerRecentCadastreName",
+      "value": ""
+    },
+    {
+      "key": "organizerRecentCadastreCnpj",
+      "value": ""
+    },
+    {
+      "key": "organizerRecentCadastreEmail",
+      "value": ""
+    },
+    {
+      "key": "organizerRecentCadastrePhoneNumber",
       "value": ""
     }
   ]
