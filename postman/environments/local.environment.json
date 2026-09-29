@@ -1,0 +1,36 @@
+{
+  "id": "local-env",
+  "name": "Local Environment - eventService",
+  "values": [
+    {
+      "key": "event_service_url",
+      "value": "http://localhost:8084",
+      "enabled": true
+    },
+    {
+      "key": "auth_service_url",
+      "value": "http://localhost:8082/auth",
+      "enabled": true
+    },
+    {
+      "key": "user_service_url",
+      "value": "http://localhost:8081/users",
+      "enabled": true
+    },
+    {
+      "key": "useMock",
+      "value": "true",
+      "enabled": true
+    },
+    {
+      "key": "adminEmail",
+      "value": "lucasm@gmail.com",
+      "enabled": true
+    },
+    {
+      "key": "adminPassword",
+      "value": "Password03#",
+      "enabled": true
+    }
+  ]
+}
