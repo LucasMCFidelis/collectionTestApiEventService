@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "b6cb1bc0-bd7a-4d5b-bdb1-72235affa9e1",
+    "_postman_id": "d4f8a5bb-0830-4617-9c03-8ae53d9cab1b",
     "name": "eventsService",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "36785755",
-    "_collection_link": "https://go.postman.co/collection/36785755-b6cb1bc0-bd7a-4d5b-bdb1-72235affa9e1?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/36785755-d4f8a5bb-0830-4617-9c03-8ae53d9cab1b?source=collection_link"
   },
   "item": [
     {
@@ -2826,7 +2826,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}} {{$randomInt}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
@@ -2854,23 +2859,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 403\", function () {\r",
-                      "    pm.response.to.have.status(403);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Permissão insuficiente\").toLowerCase()\r",
-                      "    pm.expect(pm.response.text()).to.contain(expectMessage);\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 403\", function () {\r\n    pm.response.to.have.status(403);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Permissão insuficiente\").toLowerCase()\r\n    pm.expect(pm.response.text()).to.contain(expectMessage);\r\n});"
+                    ]
                   }
                 }
               ],
@@ -2886,7 +2878,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_USER"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
@@ -2914,23 +2911,19 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 409\", function () {\r",
-                      "    pm.response.to.have.status(409);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    const expectMessage = (\"Esta categoria já está cadastrada\").toLowerCase()\r",
-                      "    pm.expect(pm.response.text().toLowerCase()).to.include(expectMessage);\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 409\", function () {\r\n    pm.response.to.have.status(409);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    const expectMessage = (\"Esta categoria já está cadastrada\").toLowerCase()\r\n    pm.expect(pm.response.text().toLowerCase()).to.include(expectMessage);\r\n});"
+                    ]
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createCategoryRequest = use(\"createCategoryRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\n\r\ncreateCategoryRequest(adminToken, true);\r\n"
+                    ]
                   }
                 }
               ],
@@ -2946,10 +2939,15 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"categoryName\": \"{{categoryRecentCadastreName}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
+                  "raw": "{\r\n    \"categoryName\": \"{{categoryConflictName}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -3007,7 +3005,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
@@ -3068,7 +3071,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
@@ -3150,7 +3158,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{categoryNameBelowMinCharacters}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
@@ -3232,7 +3245,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{categoryNameExceedMaxCharacters}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
@@ -3302,7 +3320,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}} {{$randomInt}}\",\r\n    \"categoryDescription\": \"\"\r\n}",
@@ -3384,7 +3407,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}} {{$randomInt}}\", \r\n    \"categoryDescription\": \"{{categoryDescriptionExceedMaxCharacters}}\"\r\n}",
@@ -3454,7 +3482,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}} {{$randomInt}}\"\r\n}",
@@ -3517,7 +3550,12 @@
               ],
               "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-categories",
                   "host": [
@@ -3550,7 +3588,12 @@
               ],
               "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-categories/{{categoryRecentCadastreId}}",
                   "host": [
@@ -3591,7 +3634,12 @@
               ],
               "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-categories/58187a40-4444-4777-80d3-05f16a44423a",
                   "host": [
@@ -3632,7 +3680,12 @@
               ],
               "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-categories/a12323a",
                   "host": [
@@ -3645,6 +3698,17 @@
                 }
               },
               "response": []
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createCategoryRequest = use(\"createCategoryRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\n\r\ncreateCategoryRequest(adminToken);\r\n"
+                ]
+              }
             }
           ]
         },
@@ -3680,7 +3744,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-categories/{{categoryRecentCadastreId}}",
                   "host": [
@@ -3731,7 +3800,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-categories/c8be4e1c-5930-4fbb-885c-ebb0aa6ddbcf",
                   "host": [
@@ -3751,34 +3825,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 403\", function () {\r",
-                      "    pm.response.to.have.status(403);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'message'\", function () {\r",
-                      "    pm.expect(pm.response.json().message).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida mensagem de sucesso\", function () {\r",
-                      "    const expectMessage = (\"Permissão insuficiente\").toLowerCase()\r",
-                      "    pm.expect(pm.response.json().message.toLowerCase()).to.include(expectMessage);\r",
-                      "})"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                },
-                {
-                  "listen": "prerequest",
-                  "script": {
                     "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                      "pm.test(\"Status code deve ser 403\", function () {\r\n    pm.response.to.have.status(403);\r\n});\r\n\r\npm.test(\"Valida presença do campo 'message'\", function () {\r\n    pm.expect(pm.response.json().message).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida mensagem de sucesso\", function () {\r\n    const expectMessage = (\"Permissão insuficiente\").toLowerCase()\r\n    pm.expect(pm.response.json().message.toLowerCase()).to.include(expectMessage);\r\n})"
+                    ]
                   }
                 }
               ],
@@ -3794,7 +3844,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_USER"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-categories/{{categoryRecentCadastreId}}",
                   "host": [
@@ -3857,7 +3912,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-categories/{{categoryRecentCadastreId}}",
                   "host": [
@@ -3908,7 +3968,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-categories/c8be4",
                   "host": [
@@ -3959,7 +4024,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-categories/",
                   "host": [
@@ -3972,6 +4042,17 @@
                 }
               },
               "response": []
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createCategoryRequest = use(\"createCategoryRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\n\r\ncreateCategoryRequest(adminToken);\r\n"
+                ]
+              }
             }
           ]
         },
@@ -4039,7 +4120,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}}\",\r\n    \"categoryDescription\": \"{{$randomLoremParagraph}}\" \r\n}",
@@ -4132,7 +4218,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{categoryRecentCadastreName}}\",\r\n    \"categoryDescription\":  \"{{categoryRecentCadastreDescription}}\"\r\n}",
@@ -4192,7 +4283,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}}\",\r\n    \"categoryDescription\": \"{{$randomLoremParagraph}}\" \r\n}",
@@ -4264,7 +4360,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}}\",\r\n    \"categoryDescription\": \"{{$randomLoremParagraph}}\" \r\n}",
@@ -4336,7 +4437,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{categoryConflictName}}\",\r\n    \"categoryDescription\": \"{{$randomLoremParagraph}}\" \r\n}",
@@ -4365,34 +4471,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 403\", function () {\r",
-                      "    pm.response.to.have.status(403);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida presença do campo 'message'\", function () {\r",
-                      "    pm.expect(pm.response.json().message).to.not.be.null;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Valida mensagem de sucesso\", function () {\r",
-                      "    const expectMessage = (\"Permissão insuficiente\").toLowerCase()\r",
-                      "    pm.expect(pm.response.json().message.toLowerCase()).to.include(expectMessage);\r",
-                      "})"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                },
-                {
-                  "listen": "prerequest",
-                  "script": {
                     "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                      "pm.test(\"Status code deve ser 403\", function () {\r\n    pm.response.to.have.status(403);\r\n});\r\n\r\npm.test(\"Valida presença do campo 'message'\", function () {\r\n    pm.expect(pm.response.json().message).to.not.be.null;\r\n});\r\n\r\npm.test(\"Valida mensagem de sucesso\", function () {\r\n    const expectMessage = (\"Permissão insuficiente\").toLowerCase()\r\n    pm.expect(pm.response.json().message.toLowerCase()).to.include(expectMessage);\r\n})"
+                    ]
                   }
                 }
               ],
@@ -4408,7 +4490,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_USER"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}}\",\r\n    \"categoryDescription\": \"{{$randomLoremParagraph}}\" \r\n}",
@@ -4491,7 +4578,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{categoryNameBelowMinCharacters}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
@@ -4574,7 +4666,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{categoryNameExceedMaxCharacters}}\", \r\n    \"categoryDescription\": \"{{$randomProductName}}\"\r\n}",
@@ -4657,7 +4754,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"categoryName\": \"{{$randomAdjective}} {{$randomInt}}\", \r\n    \"categoryDescription\": \"{{categoryDescriptionExceedMaxCharacters}}\"\r\n}",
@@ -4686,19 +4788,8 @@
               "listen": "prerequest",
               "script": {
                 "type": "text/javascript",
-                "packages": {},
-                "requests": {},
                 "exec": [
-                  "function use(fnName) {\r",
-                  "    const raw = pm.collectionVariables.get(fnName);\r",
-                  "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-                  "    return eval(`(${raw})`);\r",
-                  "}\r",
-                  "\r",
-                  "const createCategoryRequest = use(\"createCategoryRequest\");\r",
-                  "const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
-                  "\r",
-                  "createCategoryRequest(adminToken, true);"
+                  "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createCategoryRequest = use(\"createCategoryRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\n\r\ncreateCategoryRequest(adminToken);"
                 ]
               }
             },
@@ -4706,20 +4797,8 @@
               "listen": "test",
               "script": {
                 "type": "text/javascript",
-                "packages": {},
-                "requests": {},
                 "exec": [
-                  "function use(fnName) {\r",
-                  "    const raw = pm.collectionVariables.get(fnName);\r",
-                  "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-                  "    return eval(`(${raw})`);\r",
-                  "}\r",
-                  "\r",
-                  "const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
-                  "const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
-                  "const categoryConflictId = pm.collectionVariables.get(\"categoryConclictId\");\r",
-                  "\r",
-                  "deleteCategoryRequest(adminToken, categoryConflictId);"
+                  "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst deleteCategoryRequest = use(\"deleteCategoryRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\nconst categoryConflictId = pm.collectionVariables.get(\"categoryConclictId\");\r\n\r\ndeleteCategoryRequest(adminToken, categoryConflictId);"
                 ]
               }
             }
@@ -4728,44 +4807,20 @@
       ],
       "event": [
         {
-          "listen": "prerequest",
+          "listen": "test",
           "script": {
             "type": "text/javascript",
-            "packages": {},
-            "requests": {},
             "exec": [
-              "function use(fnName) {\r",
-              "    const raw = pm.collectionVariables.get(fnName);\r",
-              "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-              "    return eval(`(${raw})`);\r",
-              "}\r",
-              "\r",
-              "const createCategoryRequest = use(\"createCategoryRequest\");\r",
-              "const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
-              "\r",
-              "createCategoryRequest(adminToken);\r",
-              ""
+              "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst deleteCategoryRequest = use(\"deleteCategoryRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\nconst categoryId = pm.collectionVariables.get(\"categoryRecentCadastreId\");\r\n\r\ndeleteCategoryRequest(adminToken, categoryId);"
             ]
           }
         },
         {
-          "listen": "test",
+          "listen": "prerequest",
           "script": {
             "type": "text/javascript",
-            "packages": {},
-            "requests": {},
             "exec": [
-              "function use(fnName) {\r",
-              "    const raw = pm.collectionVariables.get(fnName);\r",
-              "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-              "    return eval(`(${raw})`);\r",
-              "}\r",
-              "\r",
-              "const deleteCategoryRequest = use(\"deleteCategoryRequest\");\r",
-              "const adminToken = pm.collectionVariables.get(\"adminToken\");\r",
-              "const categoryId = pm.collectionVariables.get(\"categoryRecentCadastreId\");\r",
-              "\r",
-              "deleteCategoryRequest(adminToken, categoryId);"
+              "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst login = use('performLogin');\r\n\r\nlogin(pm.environment.get('adminEmail'), pm.environment.get('adminPassword'), \"SUCCESS_LOGIN_USER\")"
             ]
           }
         }
@@ -10821,7 +10876,7 @@
                 "header": [
                   {
                     "key": "Authorization",
-                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwODc0MzI4Yy1iZmQ1LTRhODAtYjdlMy01N2M3YWU3N2Y4NDgiLCJlbWFpbCI6Ikd1c3NpZV9HcmFudEB5YWhvby5jb20iLCJyb2xlTmFtZSI6IlVzZXIiLCJpYXQiOjE3MzA2ODk5NTksImV4cCI6MTczMDY5MzU1OX0.GKNs-H6GTSxHtstNgpJSVSDITYnuaAO-t96hnpqKAno",
+                    "value": "Bearer ",
                     "description": "token gerado pelo login",
                     "type": "text"
                   }
@@ -11398,7 +11453,7 @@
           "}\r",
           "\r",
           "/* ---------------- CATEGORY ---------------- */\r",
-          "async function createCategoryRequest(token, saveVariablesForConflict = false, scenario = \"SUCCESS_CREATE_CATEGORY\", attempt = 1) {\r",
+          "async function createCategoryRequest(token, saveVariablesForConflict = false, scenario = \"SUCCESS_VALIDATE_TOKEN_ADMIN\", attempt = 1) {\r",
           "    if (attempt > 5) {\r",
           "        throw new Error(\"❌ Não foi possível criar categoria após 5 tentativas.\");\r",
           "    }\r",
@@ -11704,6 +11759,30 @@
     },
     {
       "key": "organizerRecentCadastrePhoneNumber",
+      "value": ""
+    },
+    {
+      "key": "categoryNameExceedMaxCharacters",
+      "value": ""
+    },
+    {
+      "key": "categoryConflictName",
+      "value": ""
+    },
+    {
+      "key": "categoryConflictId",
+      "value": ""
+    },
+    {
+      "key": "categoryRecentCadastreId",
+      "value": ""
+    },
+    {
+      "key": "categoryRecentCadastreName",
+      "value": ""
+    },
+    {
+      "key": "categoryRecentCadastreDescription",
       "value": ""
     }
   ]
