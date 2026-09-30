@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "d4f8a5bb-0830-4617-9c03-8ae53d9cab1b",
+    "_postman_id": "0cf9b62b-5200-434d-96c3-315fef8f8e3c",
     "name": "eventsService",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "36785755",
-    "_collection_link": "https://go.postman.co/collection/36785755-d4f8a5bb-0830-4617-9c03-8ae53d9cab1b?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/36785755-0cf9b62b-5200-434d-96c3-315fef8f8e3c?source=collection_link"
   },
   "item": [
     {
@@ -40,7 +40,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -92,7 +92,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_USER"
                   }
                 ],
@@ -169,7 +169,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -230,7 +230,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -291,7 +291,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -343,7 +343,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -404,7 +404,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -465,7 +465,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -517,7 +517,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -569,7 +569,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -621,7 +621,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -673,7 +673,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -725,7 +725,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -777,7 +777,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -829,7 +829,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -881,7 +881,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -933,7 +933,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -985,7 +985,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1077,7 +1077,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1118,7 +1118,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1164,7 +1164,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1210,7 +1210,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1270,7 +1270,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1314,7 +1314,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1358,7 +1358,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1402,7 +1402,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_USER"
                   }
                 ],
@@ -1470,7 +1470,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1514,7 +1514,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1574,7 +1574,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1636,7 +1636,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1689,7 +1689,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1766,7 +1766,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1819,7 +1819,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_USER"
                   }
                 ],
@@ -1881,7 +1881,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1943,7 +1943,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -1996,7 +1996,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2058,7 +2058,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2120,7 +2120,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2182,7 +2182,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2235,7 +2235,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2288,7 +2288,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2350,7 +2350,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2403,7 +2403,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2456,7 +2456,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2518,7 +2518,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2571,7 +2571,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2624,7 +2624,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2677,7 +2677,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2739,7 +2739,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2863,7 +2863,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -2915,7 +2915,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_USER"
                   }
                 ],
@@ -2976,7 +2976,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3042,7 +3042,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3108,7 +3108,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3195,7 +3195,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3282,7 +3282,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3357,7 +3357,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3444,7 +3444,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3519,7 +3519,7 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3587,7 +3587,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3625,7 +3625,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3671,7 +3671,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3717,7 +3717,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3781,7 +3781,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3837,7 +3837,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -3881,7 +3881,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_USER"
                   }
                 ],
@@ -3949,7 +3949,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -4005,7 +4005,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -4061,7 +4061,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -4157,7 +4157,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -4255,7 +4255,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -4320,7 +4320,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -4397,7 +4397,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -4474,7 +4474,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -4527,7 +4527,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_USER"
                   }
                 ],
@@ -4615,7 +4615,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -4703,7 +4703,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -4791,7 +4791,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -4927,7 +4927,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -5009,7 +5009,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -5118,7 +5118,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -5227,7 +5227,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -5336,7 +5336,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -5445,7 +5445,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -5532,7 +5532,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -5641,7 +5641,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -5729,7 +5729,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -5804,7 +5804,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -5879,7 +5879,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -5988,7 +5988,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -6075,7 +6075,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -6184,7 +6184,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -6262,7 +6262,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -6337,7 +6337,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -6421,7 +6421,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -6503,7 +6503,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -6612,7 +6612,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -6721,7 +6721,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -6830,7 +6830,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -6944,7 +6944,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -7053,7 +7053,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -7162,7 +7162,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -7271,7 +7271,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -7380,7 +7380,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -7494,7 +7494,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -7603,7 +7603,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -7712,7 +7712,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -7821,7 +7821,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -7930,7 +7930,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -8044,7 +8044,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -8153,7 +8153,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -8262,7 +8262,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -8371,7 +8371,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -8480,7 +8480,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -8594,7 +8594,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -8703,7 +8703,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -8812,7 +8812,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -8918,7 +8918,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -9027,7 +9027,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -9118,7 +9118,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -9197,7 +9197,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -9306,7 +9306,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -9415,7 +9415,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -9524,7 +9524,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -9618,7 +9618,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -9707,7 +9707,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -9796,7 +9796,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -9885,7 +9885,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -9994,7 +9994,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -10088,7 +10088,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -10174,7 +10174,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -10249,7 +10249,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -10338,7 +10338,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -10447,7 +10447,7 @@
                     "method": "POST",
                     "header": [
                       {
-                        "key": "X-Mock-Scenario",
+                        "key": "X-Mock-Auth-Scenario",
                         "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                       }
                     ],
@@ -10480,81 +10480,19 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 201\", function () {\r",
-                      "    pm.response.to.have.status(201);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Resposta deve conter o campo 'eventId'\", function () {\r",
-                      "    pm.expect(pm.response.json().eventId).to.not.be.null;\r",
-                      "});\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Resposta deve conter o campo 'eventId'\", function () {\r\n    pm.expect(pm.response.json().eventId).to.not.be.null;\r\n});\r\n"
+                    ]
                   }
                 },
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "// Gera uma hora aleatória entre 0 e 23\r",
-                      "const hour = Math.floor(Math.random() * 24);\r",
-                      "\r",
-                      "// Gera um minuto aleatório entre 0 e 59\r",
-                      "const minute = Math.floor(Math.random() * 60);\r",
-                      "\r",
-                      "// Formata a hora e o minuto para garantir que sempre tenham dois dígitos\r",
-                      "const formattedHour = hour.toString().padStart(2, '0');\r",
-                      "const formattedMinute = minute.toString().padStart(2, '0');\r",
-                      "\r",
-                      "// Combina hora e minuto em um horário\r",
-                      "const randomTime = `${formattedHour}:${formattedMinute}`;\r",
-                      "\r",
-                      "// Armazena o horário em uma variável de ambiente\r",
-                      "pm.environment.set(\"randomStartTime\", randomTime);\r",
-                      "\r",
-                      "// Função para gerar uma data aleatória entre duas datas\r",
-                      "function randomDate(start, end) {\r",
-                      "    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));\r",
-                      "}\r",
-                      "\r",
-                      "// Define a data mínima de início como a data atual\r",
-                      "const now = new Date();\r",
-                      "const minStartDate = new Date(now);\r",
-                      "minStartDate.setDate(now.getDate() + 1); // Garante que seja no futuro\r",
-                      "\r",
-                      "// Define a data máxima de início como um intervalo de 3 meses a partir de hoje\r",
-                      "const maxStartDate = new Date(minStartDate);\r",
-                      "maxStartDate.setMonth(minStartDate.getMonth() + 3);\r",
-                      "\r",
-                      "// Gera a data de início aleatória dentro do intervalo válido\r",
-                      "const startDateTime = randomDate(minStartDate, maxStartDate);\r",
-                      "\r",
-                      "// Define a data mínima de término como a data de início + 1 hora\r",
-                      "const minEndDate = new Date(startDateTime);\r",
-                      "minEndDate.setHours(startDateTime.getHours() + 1);\r",
-                      "\r",
-                      "// Define a data máxima de término como até 7 dias após a data de início\r",
-                      "const maxEndDate = new Date(startDateTime);\r",
-                      "maxEndDate.setDate(startDateTime.getDate() + 7);\r",
-                      "\r",
-                      "// Gera a data de término aleatória dentro do intervalo válido\r",
-                      "const endDateTime = randomDate(minEndDate, maxEndDate);\r",
-                      "\r",
-                      "// Formata as datas para o padrão ISO 8601\r",
-                      "const formattedStartDateTime = startDateTime.toISOString();\r",
-                      "const formattedEndDateTime = endDateTime.toISOString();\r",
-                      "\r",
-                      "// Armazena as datas geradas nas variáveis de ambiente\r",
-                      "pm.environment.set(\"startDateTime\", formattedStartDateTime);\r",
-                      "pm.environment.set(\"endDateTime\", formattedEndDateTime);\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "// Gera uma hora aleatória entre 0 e 23\r\nconst hour = Math.floor(Math.random() * 24);\r\n\r\n// Gera um minuto aleatório entre 0 e 59\r\nconst minute = Math.floor(Math.random() * 60);\r\n\r\n// Formata a hora e o minuto para garantir que sempre tenham dois dígitos\r\nconst formattedHour = hour.toString().padStart(2, '0');\r\nconst formattedMinute = minute.toString().padStart(2, '0');\r\n\r\n// Combina hora e minuto em um horário\r\nconst randomTime = `${formattedHour}:${formattedMinute}`;\r\n\r\n// Armazena o horário em uma variável de ambiente\r\npm.environment.set(\"randomStartTime\", randomTime);\r\n\r\n// Função para gerar uma data aleatória entre duas datas\r\nfunction randomDate(start, end) {\r\n    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));\r\n}\r\n\r\n// Define a data mínima de início como a data atual\r\nconst now = new Date();\r\nconst minStartDate = new Date(now);\r\nminStartDate.setDate(now.getDate() + 1); // Garante que seja no futuro\r\n\r\n// Define a data máxima de início como um intervalo de 3 meses a partir de hoje\r\nconst maxStartDate = new Date(minStartDate);\r\nmaxStartDate.setMonth(minStartDate.getMonth() + 3);\r\n\r\n// Gera a data de início aleatória dentro do intervalo válido\r\nconst startDateTime = randomDate(minStartDate, maxStartDate);\r\n\r\n// Define a data mínima de término como a data de início + 1 hora\r\nconst minEndDate = new Date(startDateTime);\r\nminEndDate.setHours(startDateTime.getHours() + 1);\r\n\r\n// Define a data máxima de término como até 7 dias após a data de início\r\nconst maxEndDate = new Date(startDateTime);\r\nmaxEndDate.setDate(startDateTime.getDate() + 7);\r\n\r\n// Gera a data de término aleatória dentro do intervalo válido\r\nconst endDateTime = randomDate(minEndDate, maxEndDate);\r\n\r\n// Formata as datas para o padrão ISO 8601\r\nconst formattedStartDateTime = startDateTime.toISOString();\r\nconst formattedEndDateTime = endDateTime.toISOString();\r\n\r\n// Armazena as datas geradas nas variáveis de ambiente\r\npm.environment.set(\"startDateTime\", formattedStartDateTime);\r\npm.environment.set(\"endDateTime\", formattedEndDateTime);\r\n"
+                    ]
                   }
                 }
               ],
@@ -10572,8 +10510,12 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  },
+                  {
+                    "key": "X-Mock-Mapbox-Scenario",
+                    "value": "SUCCESS_MAPBOX"
                   }
                 ],
                 "body": {
@@ -10603,81 +10545,19 @@
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "// Gera uma hora aleatória entre 0 e 23\r",
-                      "const hour = Math.floor(Math.random() * 24);\r",
-                      "\r",
-                      "// Gera um minuto aleatório entre 0 e 59\r",
-                      "const minute = Math.floor(Math.random() * 60);\r",
-                      "\r",
-                      "// Formata a hora e o minuto para garantir que sempre tenham dois dígitos\r",
-                      "const formattedHour = hour.toString().padStart(2, '0');\r",
-                      "const formattedMinute = minute.toString().padStart(2, '0');\r",
-                      "\r",
-                      "// Combina hora e minuto em um horário\r",
-                      "const randomTime = `${formattedHour}:${formattedMinute}`;\r",
-                      "\r",
-                      "// Armazena o horário em uma variável de ambiente\r",
-                      "pm.environment.set(\"randomStartTime\", randomTime);\r",
-                      "\r",
-                      "// Função para gerar uma data aleatória entre duas datas\r",
-                      "function randomDate(start, end) {\r",
-                      "    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));\r",
-                      "}\r",
-                      "\r",
-                      "// Define a data mínima de início como a data atual\r",
-                      "const now = new Date();\r",
-                      "const minStartDate = new Date(now);\r",
-                      "minStartDate.setDate(now.getDate() + 1); // Garante que seja no futuro\r",
-                      "\r",
-                      "// Define a data máxima de início como um intervalo de 3 meses a partir de hoje\r",
-                      "const maxStartDate = new Date(minStartDate);\r",
-                      "maxStartDate.setMonth(minStartDate.getMonth() + 3);\r",
-                      "\r",
-                      "// Gera a data de início aleatória dentro do intervalo válido\r",
-                      "const startDateTime = randomDate(minStartDate, maxStartDate);\r",
-                      "\r",
-                      "// Define a data mínima de término como a data de início + 1 hora\r",
-                      "const minEndDate = new Date(startDateTime);\r",
-                      "minEndDate.setHours(startDateTime.getHours() + 1);\r",
-                      "\r",
-                      "// Define a data máxima de término como até 7 dias após a data de início\r",
-                      "const maxEndDate = new Date(startDateTime);\r",
-                      "maxEndDate.setDate(startDateTime.getDate() + 7);\r",
-                      "\r",
-                      "// Gera a data de término aleatória dentro do intervalo válido\r",
-                      "const endDateTime = randomDate(minEndDate, maxEndDate);\r",
-                      "\r",
-                      "// Formata as datas para o padrão ISO 8601\r",
-                      "const formattedStartDateTime = startDateTime.toISOString();\r",
-                      "const formattedEndDateTime = endDateTime.toISOString();\r",
-                      "\r",
-                      "// Armazena as datas geradas nas variáveis de ambiente\r",
-                      "pm.environment.set(\"startDateTime\", formattedStartDateTime);\r",
-                      "pm.environment.set(\"endDateTime\", formattedEndDateTime);\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "// Gera uma hora aleatória entre 0 e 23\r\nconst hour = Math.floor(Math.random() * 24);\r\n\r\n// Gera um minuto aleatório entre 0 e 59\r\nconst minute = Math.floor(Math.random() * 60);\r\n\r\n// Formata a hora e o minuto para garantir que sempre tenham dois dígitos\r\nconst formattedHour = hour.toString().padStart(2, '0');\r\nconst formattedMinute = minute.toString().padStart(2, '0');\r\n\r\n// Combina hora e minuto em um horário\r\nconst randomTime = `${formattedHour}:${formattedMinute}`;\r\n\r\n// Armazena o horário em uma variável de ambiente\r\npm.environment.set(\"randomStartTime\", randomTime);\r\n\r\n// Função para gerar uma data aleatória entre duas datas\r\nfunction randomDate(start, end) {\r\n    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));\r\n}\r\n\r\n// Define a data mínima de início como a data atual\r\nconst now = new Date();\r\nconst minStartDate = new Date(now);\r\nminStartDate.setDate(now.getDate() + 1); // Garante que seja no futuro\r\n\r\n// Define a data máxima de início como um intervalo de 3 meses a partir de hoje\r\nconst maxStartDate = new Date(minStartDate);\r\nmaxStartDate.setMonth(minStartDate.getMonth() + 3);\r\n\r\n// Gera a data de início aleatória dentro do intervalo válido\r\nconst startDateTime = randomDate(minStartDate, maxStartDate);\r\n\r\n// Define a data mínima de término como a data de início + 1 hora\r\nconst minEndDate = new Date(startDateTime);\r\nminEndDate.setHours(startDateTime.getHours() + 1);\r\n\r\n// Define a data máxima de término como até 7 dias após a data de início\r\nconst maxEndDate = new Date(startDateTime);\r\nmaxEndDate.setDate(startDateTime.getDate() + 7);\r\n\r\n// Gera a data de término aleatória dentro do intervalo válido\r\nconst endDateTime = randomDate(minEndDate, maxEndDate);\r\n\r\n// Formata as datas para o padrão ISO 8601\r\nconst formattedStartDateTime = startDateTime.toISOString();\r\nconst formattedEndDateTime = endDateTime.toISOString();\r\n\r\n// Armazena as datas geradas nas variáveis de ambiente\r\npm.environment.set(\"startDateTime\", formattedStartDateTime);\r\npm.environment.set(\"endDateTime\", formattedEndDateTime);\r\n"
+                    ]
                   }
                 },
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 201\", function () {\r",
-                      "    pm.response.to.have.status(201);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Resposta deve conter o campo 'eventId'\", function () {\r",
-                      "    pm.expect(pm.response.json().eventId).to.not.be.null;\r",
-                      "});\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Resposta deve conter o campo 'eventId'\", function () {\r\n    pm.expect(pm.response.json().eventId).to.not.be.null;\r\n});\r\n"
+                    ]
                   }
                 }
               ],
@@ -10695,8 +10575,12 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  },
+                  {
+                    "key": "X-Mock-Mapbox-Scenario",
+                    "value": "SUCCESS_MAPBOX"
                   }
                 ],
                 "body": {
@@ -10726,84 +10610,19 @@
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      "// Gera uma hora aleatória entre 0 e 23\r",
-                      "const hour = Math.floor(Math.random() * 24);\r",
-                      "\r",
-                      "// Gera um minuto aleatório entre 0 e 59\r",
-                      "const minute = Math.floor(Math.random() * 60);\r",
-                      "\r",
-                      "// Formata a hora e o minuto para garantir que sempre tenham dois dígitos\r",
-                      "const formattedHour = hour.toString().padStart(2, '0');\r",
-                      "const formattedMinute = minute.toString().padStart(2, '0');\r",
-                      "\r",
-                      "// Combina hora e minuto em um horário\r",
-                      "const randomTime = `${formattedHour}:${formattedMinute}`;\r",
-                      "\r",
-                      "// Armazena o horário em uma variável de ambiente\r",
-                      "pm.environment.set(\"randomStartTime\", randomTime);\r",
-                      "\r",
-                      "// Função para gerar uma data aleatória entre duas datas\r",
-                      "function randomDate(start, end) {\r",
-                      "    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));\r",
-                      "}\r",
-                      "\r",
-                      "// Define a data mínima de início como a data atual\r",
-                      "const now = new Date();\r",
-                      "const minStartDate = new Date(now);\r",
-                      "minStartDate.setDate(now.getDate() + 1); // Garante que seja no futuro\r",
-                      "\r",
-                      "// Define a data máxima de início como um intervalo de 3 meses a partir de hoje\r",
-                      "const maxStartDate = new Date(minStartDate);\r",
-                      "maxStartDate.setMonth(minStartDate.getMonth() + 3);\r",
-                      "\r",
-                      "// Gera a data de início aleatória dentro do intervalo válido\r",
-                      "const startDateTime = randomDate(minStartDate, maxStartDate);\r",
-                      "\r",
-                      "// Define a data mínima de término como a data de início + 1 hora\r",
-                      "const minEndDate = new Date(startDateTime);\r",
-                      "minEndDate.setHours(startDateTime.getHours() + 1);\r",
-                      "\r",
-                      "// Define a data máxima de término como até 7 dias após a data de início\r",
-                      "const maxEndDate = new Date(startDateTime);\r",
-                      "maxEndDate.setDate(startDateTime.getDate() + 7);\r",
-                      "\r",
-                      "// Gera a data de término aleatória dentro do intervalo válido\r",
-                      "const endDateTime = randomDate(minEndDate, maxEndDate);\r",
-                      "\r",
-                      "// Formata as datas para o padrão ISO 8601\r",
-                      "const formattedStartDateTime = startDateTime.toISOString();\r",
-                      "const formattedEndDateTime = endDateTime.toISOString();\r",
-                      "\r",
-                      "// Armazena as datas geradas nas variáveis de ambiente\r",
-                      "pm.environment.set(\"startDateTime\", formattedStartDateTime);\r",
-                      "pm.environment.set(\"endDateTime\", formattedEndDateTime);\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "// Gera uma hora aleatória entre 0 e 23\r\nconst hour = Math.floor(Math.random() * 24);\r\n\r\n// Gera um minuto aleatório entre 0 e 59\r\nconst minute = Math.floor(Math.random() * 60);\r\n\r\n// Formata a hora e o minuto para garantir que sempre tenham dois dígitos\r\nconst formattedHour = hour.toString().padStart(2, '0');\r\nconst formattedMinute = minute.toString().padStart(2, '0');\r\n\r\n// Combina hora e minuto em um horário\r\nconst randomTime = `${formattedHour}:${formattedMinute}`;\r\n\r\n// Armazena o horário em uma variável de ambiente\r\npm.environment.set(\"randomStartTime\", randomTime);\r\n\r\n// Função para gerar uma data aleatória entre duas datas\r\nfunction randomDate(start, end) {\r\n    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));\r\n}\r\n\r\n// Define a data mínima de início como a data atual\r\nconst now = new Date();\r\nconst minStartDate = new Date(now);\r\nminStartDate.setDate(now.getDate() + 1); // Garante que seja no futuro\r\n\r\n// Define a data máxima de início como um intervalo de 3 meses a partir de hoje\r\nconst maxStartDate = new Date(minStartDate);\r\nmaxStartDate.setMonth(minStartDate.getMonth() + 3);\r\n\r\n// Gera a data de início aleatória dentro do intervalo válido\r\nconst startDateTime = randomDate(minStartDate, maxStartDate);\r\n\r\n// Define a data mínima de término como a data de início + 1 hora\r\nconst minEndDate = new Date(startDateTime);\r\nminEndDate.setHours(startDateTime.getHours() + 1);\r\n\r\n// Define a data máxima de término como até 7 dias após a data de início\r\nconst maxEndDate = new Date(startDateTime);\r\nmaxEndDate.setDate(startDateTime.getDate() + 7);\r\n\r\n// Gera a data de término aleatória dentro do intervalo válido\r\nconst endDateTime = randomDate(minEndDate, maxEndDate);\r\n\r\n// Formata as datas para o padrão ISO 8601\r\nconst formattedStartDateTime = startDateTime.toISOString();\r\nconst formattedEndDateTime = endDateTime.toISOString();\r\n\r\n// Armazena as datas geradas nas variáveis de ambiente\r\npm.environment.set(\"startDateTime\", formattedStartDateTime);\r\npm.environment.set(\"endDateTime\", formattedEndDateTime);\r\n"
+                    ]
                   }
                 },
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 400\", function () {\r",
-                      "    pm.response.to.have.status(400);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a propriedade message\", function () {\r",
-                      "    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Deve validar a mensagem de retorno\", function () {\r",
-                      "    pm.expect(pm.response.text()).to.include((\"Coordenadas do evento estão fora dos limites de João Pessoa.\").toLowerCase());\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Deve validar a propriedade message\", function () {\r\n    pm.expect(pm.response.json()).to.have.property(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem de retorno\", function () {\r\n    pm.expect(pm.response.text()).to.include((\"Coordenadas do evento estão fora dos limites de João Pessoa.\").toLowerCase());\r\n});"
+                    ]
                   }
                 }
               ],
@@ -10821,8 +10640,12 @@
                 "method": "POST",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  },
+                  {
+                    "key": "X-Mock-Mapbox-Scenario",
+                    "value": "MAPBOX_OUT_OF_BOUNDS"
                   }
                 ],
                 "body": {
@@ -10872,7 +10695,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -10914,7 +10737,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_GET_EVENT"
                   }
                 ],
@@ -10960,7 +10783,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -11003,7 +10826,7 @@
                 "method": "GET",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -11019,6 +10842,17 @@
                 }
               },
               "response": []
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createEventRequest = use(\"createEventRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\n\r\ncreateEventRequest(adminToken);\r\n"
+                ]
+              }
             }
           ]
         },
@@ -11081,7 +10915,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -11146,7 +10980,7 @@
                 "method": "DELETE",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -11162,6 +10996,17 @@
                 }
               },
               "response": []
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createEventRequest = use(\"createEventRequest\");\r\nconst adminToken = pm.collectionVariables.get(\"adminToken\");\r\n\r\ncreateEventRequest(adminToken);\r\n"
+                ]
+              }
             }
           ]
         },
@@ -11342,7 +11187,7 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "X-Mock-Scenario",
+                    "key": "X-Mock-Auth-Scenario",
                     "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
                   }
                 ],
@@ -11377,7 +11222,7 @@
           "script": {
             "type": "text/javascript",
             "exec": [
-              "const ruas = [\r\n  \"Avenida Epitácio Pessoa\",\r\n  \"Rua Diogo Velho\",\r\n  \"Rua João Machado\",\r\n  \"Avenida Cabo Branco\",\r\n  \"Rua das Trincheiras\"\r\n];\r\n\r\nconst bairros = [\r\n  \"Tambaú\",\r\n  \"Manaíra\",\r\n  \"Cabo Branco\",\r\n  \"Centro\",\r\n  \"Bessa\"\r\n];\r\n\r\npm.collectionVariables.set(\"ruaJoaoPessoa\", ruas[Math.floor(Math.random() * ruas.length)]);\r\npm.collectionVariables.set(\"bairroJoaoPessoa\", bairros[Math.floor(Math.random() * bairros.length)]);\r\n\r\nfunction use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createOrganizerRequest = use(\"createOrganizerRequest\");\r\nconst createCategoryRequest = use(\"createCategoryRequest\");\r\nconst adminToken = pm.environment.get(\"adminToken\");\r\n\r\ncreateCategoryRequest(adminToken);\r\ncreateOrganizerRequest(adminToken);"
+              "const ruas = [\r\n  \"Avenida Epitácio Pessoa\",\r\n  \"Rua Diogo Velho\",\r\n  \"Rua João Machado\",\r\n  \"Avenida Cabo Branco\",\r\n  \"Rua das Trincheiras\"\r\n];\r\n\r\nconst bairros = [\r\n  \"Tambaú\",\r\n  \"Manaíra\",\r\n  \"Cabo Branco\",\r\n  \"Centro\",\r\n  \"Bessa\"\r\n];\r\n\r\npm.collectionVariables.set(\"ruaJoaoPessoa\", ruas[Math.floor(Math.random() * ruas.length)]);\r\npm.collectionVariables.set(\"bairroJoaoPessoa\", bairros[Math.floor(Math.random() * bairros.length)]);\r\n\r\nfunction use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createOrganizerRequest = use(\"createOrganizerRequest\");\r\nconst createCategoryRequest = use(\"createCategoryRequest\");\r\nconst login = use('performLogin');\r\nconst adminToken = pm.environment.get(\"adminToken\");\r\n\r\ncreateCategoryRequest(adminToken);\r\ncreateOrganizerRequest(adminToken);\r\nlogin(pm.environment.get('adminEmail'), pm.environment.get('adminPassword'), \"SUCCESS_LOGIN_USER\")"
             ]
           }
         },
@@ -11386,7 +11231,7 @@
           "script": {
             "type": "text/javascript",
             "exec": [
-              "function use(fnName) {\r\n    const raw = pm.globals.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst deleteCategoryRequest = use(\"deleteCategoryRequest\");\r\nconst deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r\nconst deleteEventRequest = use(\"deleteEventRequest\");\r\n\r\nconst adminToken = pm.environment.get(\"adminToken\");\r\nconst categoryId = pm.environment.get(\"categoryRecentCadastreId\");\r\nconst organizerId = pm.environment.get(\"organizerRecentCadastreId\");\r\n\r\ndeleteOrganizerRequest(adminToken, organizerId);\r\ndeleteCategoryRequest(adminToken, categoryId);\r\n\r\n/***************************************************\r\n * 🧹 LIMPEZA AUTOMÁTICA DE EVENTOS CRIADOS\r\n ***************************************************/\r\n(function autoCleanCreatedEvent() {\r\n    try {\r\n        const requestUrl = pm.request.url.toString();\r\n        const method = pm.request.method;\r\n        const status = pm.response.code;\r\n        const response = pm.response.json();\r\n\r\n        // ✅ Só executa se for um POST em /events\r\n        if (method === \"POST\" && requestUrl.includes(\"/events\")) {\r\n            const eventId = response?.eventId;\r\n\r\n            // ⚠️ Caso o comportamento esperado era erro, mas veio sucesso (201 ou 200)\r\n            if (eventId && (status === 201 || status === 200)) {\r\n                console.warn(\"⚠ Evento criado inesperadamente — iniciando limpeza automática...\");\r\n\r\n                const adminToken = pm.environment.get(\"adminToken\");\r\n                if (!adminToken) {\r\n                    console.error(\"❌ Token admin não disponível — não foi possível excluir o evento.\");\r\n                    return;\r\n                }\r\n\r\n                // 🔧 Requisição DELETE\r\n                deleteEventRequest(adminToken, eventId)\r\n            }\r\n        }\r\n    } catch (err) {\r\n        console.error(\"❌ Erro no script de limpeza automática:\", err);\r\n    }\r\n})();\r\n"
+              "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst deleteCategoryRequest = use(\"deleteCategoryRequest\");\r\nconst deleteOrganizerRequest = use(\"deleteOrganizerRequest\");\r\nconst deleteEventRequest = use(\"deleteEventRequest\");\r\n\r\nconst adminToken = pm.environment.get(\"adminToken\");\r\nconst categoryId = pm.environment.get(\"categoryRecentCadastreId\");\r\nconst organizerId = pm.environment.get(\"organizerRecentCadastreId\");\r\n\r\ndeleteOrganizerRequest(adminToken, organizerId);\r\ndeleteCategoryRequest(adminToken, categoryId);\r\n\r\n/***************************************************\r\n * 🧹 LIMPEZA AUTOMÁTICA DE EVENTOS CRIADOS\r\n ***************************************************/\r\n(function autoCleanCreatedEvent() {\r\n    try {\r\n        const requestUrl = pm.request.url.toString();\r\n        const method = pm.request.method;\r\n        const status = pm.response.code;\r\n        const response = pm.response.json();\r\n\r\n        // ✅ Só executa se for um POST em /events\r\n        if (method === \"POST\" && requestUrl.includes(\"/events\")) {\r\n            const eventId = response?.eventId;\r\n\r\n            // ⚠️ Caso o comportamento esperado era erro, mas veio sucesso (201 ou 200)\r\n            if (eventId && (status === 201 || status === 200)) {\r\n                console.warn(\"⚠ Evento criado inesperadamente — iniciando limpeza automática...\");\r\n\r\n                const adminToken = pm.environment.get(\"adminToken\");\r\n                if (!adminToken) {\r\n                    console.error(\"❌ Token admin não disponível — não foi possível excluir o evento.\");\r\n                    return;\r\n                }\r\n\r\n                // 🔧 Requisição DELETE\r\n                deleteEventRequest(adminToken, eventId)\r\n            }\r\n        }\r\n    } catch (err) {\r\n        console.error(\"❌ Erro no script de limpeza automática:\", err);\r\n    }\r\n})();\r\n"
             ]
           }
         }
@@ -11420,7 +11265,7 @@
             "method": "GET",
             "header": [
               {
-                "key": "X-Mock-Scenario",
+                "key": "X-Mock-Auth-Scenario",
                 "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
               }
             ],
@@ -11480,7 +11325,7 @@
             "method": "GET",
             "header": [
               {
-                "key": "X-Mock-Scenario",
+                "key": "X-Mock-Auth-Scenario",
                 "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
               }
             ],
@@ -11536,7 +11381,7 @@
             "method": "GET",
             "header": [
               {
-                "key": "X-Mock-Scenario",
+                "key": "X-Mock-Auth-Scenario",
                 "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
               }
             ],
@@ -11607,7 +11452,7 @@
           "    };\r",
           "\r",
           "    if (pm.environment.get(\"useMock\") === \"true\" && scenario) {\r",
-          "        headers[\"x-mock-scenario\"] = scenario;\r",
+          "        headers[\"x-mock-Auth-scenario\"] = scenario;\r",
           "    }\r",
           "\r",
           "    pm.sendRequest(\r",
@@ -11657,7 +11502,7 @@
           "    };\r",
           "\r",
           "    if (pm.environment.get(\"useMock\") === \"true\" && scenario) {\r",
-          "        headers[\"x-mock-scenario\"] = scenario;\r",
+          "        headers[\"x-mock-Auth-scenario\"] = scenario;\r",
           "    }\r",
           "\r",
           "    const response = await new Promise((resolve, reject) => {\r",
@@ -11746,7 +11591,7 @@
           "    };\r",
           "\r",
           "    if (pm.environment.get(\"useMock\") === \"true\" && scenario) {\r",
-          "        headers[\"x-mock-scenario\"] = scenario;\r",
+          "        headers[\"x-mock-Auth-scenario\"] = scenario;\r",
           "    }\r",
           "\r",
           "    const response = await new Promise((resolve, reject) => {\r",
@@ -11841,7 +11686,7 @@
           "    };\r",
           "\r",
           "    if (pm.environment.get(\"useMock\") === \"true\" && scenario) {\r",
-          "        headers[\"x-mock-scenario\"] = scenario;\r",
+          "        headers[\"x-mock-Auth-scenario\"] = scenario;\r",
           "    }\r",
           "\r",
           "    const response = await new Promise((resolve, reject) => {\r",
@@ -11916,7 +11761,7 @@
           "}\r",
           "\r",
           "/* ---------------- EVENT ---------------- */\r",
-          "async function createEventRequest(token, scenario = \"SUCCESS_CREATE_EVENT\") {\r",
+          "async function createEventRequest(token, scenario = \"SUCCESS_VALIDATE_TOKEN_ADMIN\") {\r",
           "    console.log(\"🔄 Criando evento...\");\r",
           "\r",
           "    const headers = {\r",
@@ -11925,7 +11770,7 @@
           "    };\r",
           "\r",
           "    if (pm.environment.get(\"useMock\") === \"true\" && scenario) {\r",
-          "        headers[\"x-mock-scenario\"] = scenario;\r",
+          "        headers[\"x-mock-Auth-scenario\"] = scenario;\r",
           "    }\r",
           "\r",
           "    const response = await new Promise((resolve, reject) => {\r",
@@ -12158,6 +12003,14 @@
     },
     {
       "key": "categoryRecentCadastreDescription",
+      "value": ""
+    },
+    {
+      "key": "ruaJoaoPessoa",
+      "value": ""
+    },
+    {
+      "key": "bairroJoaoPessoa",
       "value": ""
     }
   ]
