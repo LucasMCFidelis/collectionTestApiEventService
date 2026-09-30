@@ -167,7 +167,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\", \r\n    \"organizerCnpj\": \"{{validCnpj}}\",\r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -1070,7 +1075,12 @@
               ],
               "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-organizers",
                   "host": [
@@ -1106,7 +1116,12 @@
               ],
               "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
                   "host": [
@@ -1147,7 +1162,12 @@
               ],
               "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-organizers/58187a40-4444-4777-80d3-05f16a44423a",
                   "host": [
@@ -1188,7 +1208,12 @@
               ],
               "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-organizers/a12323a",
                   "host": [
@@ -1443,7 +1468,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events-organizers/{{organizerRecentCadastreId}}",
                   "host": [
@@ -1734,7 +1764,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"organizerName\": \"{{$randomAdjective}}\",\r\n    \"organizerCnpj\": \"{{validCnpj}}\", \r\n    \"organizerEmail\": \"{{$randomEmail}}\", \r\n    \"organizerPhoneNumber\": \"(83)99999-9999\" \r\n}",
@@ -4890,7 +4925,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -4967,7 +5007,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -5071,7 +5116,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"           \",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -5175,7 +5225,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": 1111111,\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -5279,7 +5334,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"ab\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -5383,7 +5443,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomLoremParagraph}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -5465,7 +5530,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -5569,7 +5639,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"            \",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -5652,7 +5727,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n  \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}\r\n",
@@ -5722,7 +5802,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": {\r\n    \r\n  },\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -5792,7 +5877,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"as\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -5896,7 +5986,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomLoremParagraph}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}} {{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n  \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}\r\n",
@@ -5978,7 +6073,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -6082,7 +6182,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"               \",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -6155,7 +6260,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n  \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}\r\n",
@@ -6225,7 +6335,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": 1111111111111111111111111111111111,\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -6304,7 +6419,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": 0,\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n  \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}\r\n",
@@ -6381,7 +6501,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -6485,7 +6610,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": -1000,\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -6589,7 +6719,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"\",\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -6693,7 +6828,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}{{$randomInt}}{{$randomInt}}{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -6802,7 +6942,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -6906,7 +7051,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"              \",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -7010,7 +7160,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": 1111111111111111111111,\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -7114,7 +7269,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"rua a\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -7218,7 +7378,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomLoremParagraph}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -7327,7 +7492,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -7431,7 +7601,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": {\r\n    \r\n  },\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -7535,7 +7710,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"              \",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -7639,7 +7819,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": 0,\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}@@@!!\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n  \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}\r\n",
@@ -7743,7 +7928,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"222000222000\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -7852,7 +8042,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -7956,7 +8151,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": 0,\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"                 \",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n  \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}\r\n",
@@ -8060,7 +8260,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": 22222222222222222222,\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -8164,7 +8369,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"ABC\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -8268,7 +8478,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomLoremParagraph}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -8377,7 +8592,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -8481,7 +8701,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"            \",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -8585,7 +8810,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": 222222222222222,\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -8686,7 +8916,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": 0,\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n  \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}\r\n",
@@ -8790,7 +9025,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"{{$randomLoremParagraph}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -8876,7 +9116,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n    \"eventTitle\": \"{{$randomWords}}\",\r\n    \"eventDescription\": \"{{$randomLoremWords}}\",\r\n    \"eventLink\": \"{{$randomUrl}}\",\r\n    \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n    \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n    \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n    \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n    \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n    \"eventAccessibilityLevel\": \"\",\r\n    \"startDateTime\": \"{{startDateTime}}\",\r\n    \"endDateTime\": \"{{endDateTime}}\",\r\n    \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n    \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}",
@@ -8950,7 +9195,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": 0,\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n  \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}\r\n",
@@ -9054,7 +9304,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"              \",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -9158,7 +9413,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": 11,\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -9262,7 +9522,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"Rua {{$randomStreetName}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"alta\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -9351,7 +9616,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -9435,7 +9705,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -9519,7 +9794,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{$timestamp}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -9603,7 +9883,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"Rua {{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": {\r\n    \"dia\": 22,\r\n    \"horario\": \"22:12\"\r\n    },\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -9707,7 +9992,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"22/01/2001\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -9796,7 +10086,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -9877,7 +10172,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": 0,\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n  \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}\r\n",
@@ -9947,7 +10247,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{$timestamp}}\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -10031,7 +10336,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"Rua {{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": {\r\n    \"dia\": 22,\r\n    \"horario\": \"22:12\"\r\n    },\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -10135,7 +10445,12 @@
                       ]
                     },
                     "method": "POST",
-                    "header": [],
+                    "header": [
+                      {
+                        "key": "X-Mock-Scenario",
+                        "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                      }
+                    ],
                     "body": {
                       "mode": "raw",
                       "raw": "{\r\n  \"eventTitle\": \"{{$randomWords}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n  \"eventAddressStreet\": \"{{$randomWords}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"22/01/2001\",\r\n  \"eventCategoryId\": \"{{$guid}}\",\r\n  \"eventOrganizerId\": \"{{$guid}}\"\r\n}\r\n",
@@ -10255,7 +10570,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": 0,\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"SEM_ACESSIBILIDADE\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n  \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}\r\n",
@@ -10373,7 +10693,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"eventTitle\": \"Palestra Tec\",\r\n    \"eventDescription\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n    \"eventLink\": \"https://evento-exemplo.com\",\r\n    \"eventPrice\": 0,\r\n    \"eventAddressStreet\": \"Av. Epitácio Pessoa\",\r\n    \"eventAddressNumber\": \"1500\",\r\n    \"eventAddressNeighborhood\": \"Estados\",\r\n    \"eventAddressComplement\": \"Auditório principal\",\r\n    \"eventAccessibilityLevel\": \"ACESSIBILIDADE_COMPLETA\",\r\n    \"startDateTime\": \"{{startDateTime}}\",\r\n    \"endDateTime\": \"{{endDateTime}}\",\r\n    \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n    \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}",
@@ -10494,7 +10819,12 @@
                   ]
                 },
                 "method": "POST",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"eventTitle\": \"Palestra Tec\",\r\n    \"eventDescription\": \"{{$randomLoremWords}}\",\r\n    \"eventLink\": \"{{$randomUrl}}\",\r\n    \"eventPrice\": \"{{$randomInt}}.{{$randomInt}}\",\r\n    \"eventAddressStreet\": \"{{$randomStreetName}}\",\r\n    \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n    \"eventAddressNeighborhood\": \"{{$randomCity}}\",\r\n    \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n    \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n    \"startDateTime\": \"{{startDateTime}}\",\r\n    \"endDateTime\": \"{{endDateTime}}\",\r\n    \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n    \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}",
@@ -10540,7 +10870,12 @@
               ],
               "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events",
                   "host": [
@@ -10623,7 +10958,12 @@
               ],
               "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events/a9e0d3",
                   "host": [
@@ -10661,7 +11001,12 @@
               ],
               "request": {
                 "method": "GET",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events/086eb7b4-f3ac-4bbe-a34e-b0699957f96d",
                   "host": [
@@ -10734,7 +11079,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n    \"userId\": \"2f26cac6-f5d0-4f35-8a4c-10b5919cae23\"\r\n}",
@@ -10794,7 +11144,12 @@
                   ]
                 },
                 "method": "DELETE",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "url": {
                   "raw": "{{event_service_url}}/events/c8be4e1c-5930-4fbb-885c-ebb0aa6ddbcf",
                   "host": [
@@ -10985,7 +11340,12 @@
                   ]
                 },
                 "method": "PUT",
-                "header": [],
+                "header": [
+                  {
+                    "key": "X-Mock-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\r\n  \"eventTitle\": \"{{$randomWord}}\",\r\n  \"eventDescription\": \"{{$randomLoremWords}}\",\r\n  \"eventLink\": \"{{$randomUrl}}\",\r\n  \"eventPrice\": 0,\r\n  \"eventAddressStreet\": \"{{ruaJoaoPessoa}}\",\r\n  \"eventAddressNumber\": \"{{$randomInt}}A\",\r\n  \"eventAddressNeighborhood\": \"{{bairroJoaoPessoa}}\",\r\n  \"eventAddressComplement\": \"Apto {{$randomInt}}\",\r\n  \"eventAccessibilityLevel\": \"ACESSIBILIDADE_BASICA\",\r\n  \"startDateTime\": \"{{startDateTime}}\",\r\n  \"endDateTime\": \"{{endDateTime}}\",\r\n  \"eventCategoryId\": \"{{categoryRecentCadastreId}}\",\r\n  \"eventOrganizerId\": \"{{organizerRecentCadastreId}}\"\r\n}\r\n",
@@ -11058,7 +11418,12 @@
           ],
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "X-Mock-Scenario",
+                "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+              }
+            ],
             "url": {
               "raw": "{{event_service_url}}/map?latitude=-7.119701&longitude=-34.861367",
               "host": [
@@ -11113,7 +11478,12 @@
           ],
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "X-Mock-Scenario",
+                "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+              }
+            ],
             "url": {
               "raw": "{{event_service_url}}/map?longitude=-34.861367",
               "host": [
@@ -11164,7 +11534,12 @@
           ],
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "X-Mock-Scenario",
+                "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+              }
+            ],
             "url": {
               "raw": "{{event_service_url}}/map?latitude=-7.119701",
               "host": [

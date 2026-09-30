@@ -1,0 +1,25 @@
+{
+  "name": "mapbox reverse geocoding - MAPBOX_ADDRESS_NOT_FOUND",
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/geocoding/v5/mapbox\\.places/(-?[0-9.]+|null),(-?[0-9.]+|null)\\.json",
+    "headers": {
+      "X-Mock-Scenario": {
+        "equalTo": "MAPBOX_ADDRESS_NOT_FOUND"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "type": "FeatureCollection",
+      "query": [],
+      "features": [],
+      "attribution": "mock"
+    }
+  }
+}

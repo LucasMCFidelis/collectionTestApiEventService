@@ -1,0 +1,27 @@
+{
+  "name": "mapbox forward geocoding - MAPBOX_ADDRESS_NOT_FOUND",
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/geocoding/v5/mapbox\\.places/[^/,]+\\.json",
+    "headers": {
+      "X-Mock-Scenario": {
+        "equalTo": "MAPBOX_ADDRESS_NOT_FOUND"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "type": "FeatureCollection",
+      "query": [
+        "mock"
+      ],
+      "features": [],
+      "attribution": "mock"
+    }
+  }
+}

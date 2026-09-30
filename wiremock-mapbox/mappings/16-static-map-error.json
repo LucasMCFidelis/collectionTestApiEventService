@@ -1,0 +1,22 @@
+{
+  "name": "mapbox static map - MAPBOX_MAP_IMAGE_ERROR",
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/styles/v1/mapbox/streets-v11/static/.*",
+    "headers": {
+      "X-Mock-Scenario": {
+        "equalTo": "MAPBOX_MAP_IMAGE_ERROR"
+      }
+    }
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "message": "Internal Server Error"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "mapbox - fallback",
+  "priority": 100,
+  "request": {
+    "method": "ANY",
+    "urlPattern": ".*"
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "error": "Mock error",
+      "message": "Scenario not defined"
+    }
+  }
+}

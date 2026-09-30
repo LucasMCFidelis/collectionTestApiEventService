@@ -1,0 +1,22 @@
+{
+  "name": "mapbox reverse geocoding - MAPBOX_REVERSE_ERROR",
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/geocoding/v5/mapbox\\.places/(-?[0-9.]+|null),(-?[0-9.]+|null)\\.json",
+    "headers": {
+      "X-Mock-Scenario": {
+        "equalTo": "MAPBOX_REVERSE_ERROR"
+      }
+    }
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "message": "Internal Server Error"
+    }
+  }
+}

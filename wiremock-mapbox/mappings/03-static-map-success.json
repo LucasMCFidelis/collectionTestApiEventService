@@ -1,0 +1,20 @@
+{
+  "name": "mapbox static map - SUCCESS_MAPBOX",
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/styles/v1/mapbox/streets-v11/static/.*",
+    "headers": {
+      "X-Mock-Scenario": {
+        "equalTo": "SUCCESS_MAPBOX"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "image/png"
+    },
+    "bodyFileName": "static-map.png"
+  }
+}

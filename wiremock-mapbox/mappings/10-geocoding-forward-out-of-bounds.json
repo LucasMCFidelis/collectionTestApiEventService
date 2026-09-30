@@ -1,0 +1,65 @@
+{
+  "name": "mapbox forward geocoding - MAPBOX_OUT_OF_BOUNDS",
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/geocoding/v5/mapbox\\.places/[^/,]+\\.json",
+    "headers": {
+      "X-Mock-Scenario": {
+        "equalTo": "MAPBOX_OUT_OF_BOUNDS"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "type": "FeatureCollection",
+      "query": [
+        "mock"
+      ],
+      "features": [
+        {
+          "id": "address.2",
+          "type": "Feature",
+          "place_type": [
+            "address"
+          ],
+          "relevance": 1,
+          "text": "Avenida Paulista",
+          "place_name": "Avenida Paulista, Bela Vista, São Paulo, São Paulo 01311-000, Brasil",
+          "center": [
+            -46.6333,
+            -23.5505
+          ],
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -46.6333,
+              -23.5505
+            ]
+          },
+          "context": [
+            {
+              "id": "place.2",
+              "text": "São Paulo"
+            },
+            {
+              "id": "region.2",
+              "short_code": "BR-SP",
+              "text": "São Paulo"
+            },
+            {
+              "id": "country.1",
+              "short_code": "br",
+              "text": "Brasil"
+            }
+          ]
+        }
+      ],
+      "attribution": "mock"
+    }
+  }
+}

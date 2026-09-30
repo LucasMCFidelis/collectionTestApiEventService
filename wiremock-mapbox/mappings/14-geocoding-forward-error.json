@@ -1,0 +1,22 @@
+{
+  "name": "mapbox forward geocoding - MAPBOX_GEOCODING_ERROR",
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/geocoding/v5/mapbox\\.places/[^/,]+\\.json",
+    "headers": {
+      "X-Mock-Scenario": {
+        "equalTo": "MAPBOX_GEOCODING_ERROR"
+      }
+    }
+  },
+  "response": {
+    "status": 500,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "message": "Internal Server Error"
+    }
+  }
+}

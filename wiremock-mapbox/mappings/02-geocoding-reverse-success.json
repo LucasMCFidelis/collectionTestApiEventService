@@ -1,0 +1,70 @@
+{
+  "name": "mapbox reverse geocoding - SUCCESS_MAPBOX",
+  "priority": 10,
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/geocoding/v5/mapbox\\.places/(-?[0-9.]+|null),(-?[0-9.]+|null)\\.json",
+    "headers": {
+      "X-Mock-Scenario": {
+        "equalTo": "SUCCESS_MAPBOX"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "type": "FeatureCollection",
+      "query": [
+        -34.845,
+        -7.1195
+      ],
+      "features": [
+        {
+          "id": "address.1",
+          "type": "Feature",
+          "place_type": [
+            "address"
+          ],
+          "relevance": 1,
+          "text": "Avenida Epitácio Pessoa",
+          "place_name": "Avenida Epitácio Pessoa, Estados, João Pessoa, Paraíba 58030-001, Brasil",
+          "center": [
+            -34.845,
+            -7.1195
+          ],
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              -34.845,
+              -7.1195
+            ]
+          },
+          "context": [
+            {
+              "id": "neighborhood.1",
+              "text": "Estados"
+            },
+            {
+              "id": "place.1",
+              "text": "João Pessoa"
+            },
+            {
+              "id": "region.1",
+              "short_code": "BR-PB",
+              "text": "Paraíba"
+            },
+            {
+              "id": "country.1",
+              "short_code": "br",
+              "text": "Brasil"
+            }
+          ]
+        }
+      ],
+      "attribution": "mock"
+    }
+  }
+}
