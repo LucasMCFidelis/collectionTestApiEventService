@@ -10680,25 +10680,16 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 200\", function () {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Deve retornar um array de eventos\", function () {\r\n    pm.expect(pm.response.json()).to.be.an('array');\r\n})\r\n\r\npm.test(\"Deve validar a presernça de `eventId` de eventos\", function () {\r\n    pm.expect(pm.response.json()).to.satisfy(function (events) {\r\n        return events.every(function (event) {\r\n            return event.hasOwnProperty('eventId');\r\n        })\r\n    })\r\n})"
+                    ]
                   }
                 }
               ],
               "request": {
                 "method": "GET",
-                "header": [
-                  {
-                    "key": "X-Mock-Auth-Scenario",
-                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
-                  }
-                ],
+                "header": [],
                 "url": {
                   "raw": "{{event_service_url}}/events",
                   "host": [
@@ -10728,7 +10719,7 @@
                   "script": {
                     "type": "text/javascript",
                     "exec": [
-                      "function use(fnName) {\r\n    const raw = pm.globals.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createEventRequest = use(\"createEventRequest\");\r\nconst adminToken = pm.environment.get(\"adminToken\");\r\n\r\ncreateEventRequest(adminToken);"
+                      "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createEventRequest = use(\"createEventRequest\");\r\nconst adminToken = pm.environment.get(\"adminToken\");\r\n\r\ncreateEventRequest(adminToken);"
                     ]
                   }
                 }
@@ -10865,39 +10856,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 201\", function () {\r",
-                      "    pm.response.to.have.status(201);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Resposta deve conter o campo 'eventId'\", function () {\r",
-                      "    pm.expect(pm.response.json().eventId).to.not.be.null;\r",
-                      "});\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                },
-                {
-                  "listen": "prerequest",
-                  "script": {
                     "exec": [
-                      "function use(fnName) {\r",
-                      "    const raw = pm.globals.get(fnName);\r",
-                      "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-                      "    return eval(`(${raw})`);\r",
-                      "}\r",
-                      "\r",
-                      "const createEventRequest = use(\"createEventRequest\");\r",
-                      "const adminToken = pm.environment.get(\"adminToken\");\r",
-                      "\r",
-                      "createEventRequest(adminToken);"
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                      "pm.test(\"Status code deve ser 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Resposta deve conter o campo 'message'\", function () {\r\n    pm.expect(pm.response.json()).to.haveOwnProperty(\"message\");\r\n});\r\n\r\npm.test(\"Deve validar a mensagem retornada\", function () {\r\n    pm.expect(pm.response.json().message).to.match(/Evento deletado com sucesso/i);\r\n});\r\n"
+                    ]
                   }
                 }
               ],
@@ -11017,47 +10979,12 @@
               "name": "Editar evento existente",
               "event": [
                 {
-                  "listen": "prerequest",
-                  "script": {
-                    "exec": [
-                      "function use(fnName) {\r",
-                      "    const raw = pm.globals.get(fnName);\r",
-                      "    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r",
-                      "    return eval(`(${raw})`);\r",
-                      "}\r",
-                      "\r",
-                      "const createEventRequest = use(\"createEventRequest\");\r",
-                      "const adminToken = pm.environment.get(\"adminToken\");\r",
-                      "\r",
-                      "createEventRequest(adminToken);"
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                },
-                {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "pm.test(\"Status code deve ser 200\", function () {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Mensagem de sucesso deve ser retornada\", function () {\r",
-                      "    pm.expect(pm.response.json().message).to.eql(\"Evento atualizado com sucesso\");\r",
-                      "})\r",
-                      "\r",
-                      "pm.test(\"Evento deve ser atualizado com sucesso\", function () {\r",
-                      "    const updatedEvent = pm.response.json().updatedEvent;\r",
-                      "    const eventRecentCadastreTitle = pm.environment.get(\"eventRecentCadastreTitle\");\r",
-                      "\r",
-                      "    pm.expect(updatedEvent.eventTitle).to.not.eql(eventRecentCadastreTitle);\r",
-                      "})"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "pm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Mensagem de sucesso deve ser retornada\", function () {\r\n    pm.expect(pm.response.json().message).to.eql(\"Evento atualizado com sucesso\");\r\n})\r\n\r\npm.test(\"Evento deve ser atualizado com sucesso\", function () {\r\n    const updatedEvent = pm.response.json().updatedEvent;\r\n    const eventRecentCadastreTitle = pm.collectionVariables.get(\"eventRecentCadastreTitle\");\r\n\r\n    pm.expect(updatedEvent.eventTitle).to.not.eql(eventRecentCadastreTitle);\r\n})"
+                    ]
                   }
                 }
               ],
@@ -11075,10 +11002,12 @@
                 "method": "PUT",
                 "header": [
                   {
-                    "key": "Authorization",
-                    "value": "Bearer ",
-                    "description": "token gerado pelo login",
-                    "type": "text"
+                    "key": "X-Mock-Auth-Scenario",
+                    "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                  },
+                  {
+                    "key": "X-Mock-Mapbox-Scenario",
+                    "value": "SUCCESS_MAPBOX"
                   }
                 ],
                 "body": {
@@ -11213,6 +11142,17 @@
               },
               "response": []
             }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "function use(fnName) {\r\n    const raw = pm.collectionVariables.get(fnName);\r\n    if (!raw) throw new Error(`Função não encontrada: ${fnName}`);\r\n    return eval(`(${raw})`);\r\n}\r\n\r\nconst createEventRequest = use(\"createEventRequest\");\r\nconst adminToken = pm.environment.get(\"adminToken\");\r\n\r\ncreateEventRequest(adminToken);"
+                ]
+              }
+            }
           ]
         }
       ],
@@ -11246,18 +11186,10 @@
             {
               "listen": "test",
               "script": {
-                "exec": [
-                  "pm.test(\"Status code deve ser 200\", function () {\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});\r",
-                  "\r",
-                  "pm.test(\"Valida o Content-Type deve ser image/png\", function (){\r",
-                  "    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"image/png\");\r",
-                  "})"
-                ],
                 "type": "text/javascript",
-                "packages": {},
-                "requests": {}
+                "exec": [
+                  "pm.test(\"Status code deve ser 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Valida o Content-Type deve ser image/png\", function (){\r\n    pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"image/png\");\r\n})"
+                ]
               }
             }
           ],
@@ -11265,8 +11197,8 @@
             "method": "GET",
             "header": [
               {
-                "key": "X-Mock-Auth-Scenario",
-                "value": "SUCCESS_VALIDATE_TOKEN_ADMIN"
+                "key": "X-Mock-Mapbox-Scenario",
+                "value": "SUCCESS_MAPBOX"
               }
             ],
             "url": {
@@ -11761,7 +11693,7 @@
           "}\r",
           "\r",
           "/* ---------------- EVENT ---------------- */\r",
-          "async function createEventRequest(token, scenario = \"SUCCESS_VALIDATE_TOKEN_ADMIN\") {\r",
+          "async function createEventRequest(token, scenarioAuth = \"SUCCESS_VALIDATE_TOKEN_ADMIN\", scenarioMapbox = \"SUCCESS_MAPBOX\") {\r",
           "    console.log(\"🔄 Criando evento...\");\r",
           "\r",
           "    const headers = {\r",
@@ -11769,9 +11701,12 @@
           "        \"Authorization\": `Bearer ${token}`,\r",
           "    };\r",
           "\r",
-          "    if (pm.environment.get(\"useMock\") === \"true\" && scenario) {\r",
-          "        headers[\"x-mock-Auth-scenario\"] = scenario;\r",
+          "    if (pm.environment.get(\"useMock\") === \"true\" && scenarioAuth) {\r",
+          "        if (scenarioAuth) headers[\"x-mock-auth-scenario\"] = scenarioAuth;\r",
+          "        if (scenarioMapbox) headers[\"x-mock-mapbox-scenario\"] = scenarioMapbox;\r",
           "    }\r",
+          "\r",
+          "    console.log(headers)\r",
           "\r",
           "    const response = await new Promise((resolve, reject) => {\r",
           "        pm.sendRequest(\r",
@@ -12011,6 +11946,14 @@
     },
     {
       "key": "bairroJoaoPessoa",
+      "value": ""
+    },
+    {
+      "key": "eventRecentCadastreId",
+      "value": ""
+    },
+    {
+      "key": "eventRecentCadastreTitle",
       "value": ""
     }
   ]
